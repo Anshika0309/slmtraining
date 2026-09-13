@@ -109,32 +109,3 @@ record_id,category
 ```
 
 Every input record must receive exactly one valid category.
-
-## Deliverables
-
-Submit a repository or archive containing:
-
-1. `README.md` with setup, commands, decisions, and results.
-2. Reproducible data-preparation code.
-3. Baseline training/evaluation code.
-4. SLM training code or notebook.
-5. `predict.py` or an equivalent inference entry point.
-6. `predictions.csv` for the supplied held-out test set.
-7. `metrics.json` and a confusion-matrix image or table.
-8. A short model card covering intended use, limitations, and known failure modes.
-
-Do not include large model weights in the submission. Provide a model identifier, adapter artifact, or reproducible checkpoint instructions.
-
-## Evaluation priorities
-
-We value correct experimental design, leakage prevention, reproducibility, thoughtful error analysis, and deployable inference. A clear, honest solution with well-explained tradeoffs is stronger than an opaque solution reporting one high score.
-
-## Follow-up interview
-
-Be prepared for a 45-minute discussion covering:
-
-- why the model improved or failed to improve over the baseline;
-- how you would handle new categories or multi-label tools;
-- calibration and abstention for high-risk predictions;
-- production monitoring and drift;
-- how you would reduce cost and latency without materially hurting macro F1.
