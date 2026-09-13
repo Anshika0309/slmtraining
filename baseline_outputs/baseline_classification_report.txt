@@ -1,0 +1,12 @@
+              precision    recall  f1-score   support
+
+        Read     0.9166    0.9446    0.9304      2817
+       Write     0.8141    0.8583    0.8356      1087
+     Execute     0.7635    0.4809    0.5901       235
+ Destructive     0.9677    0.8300    0.8936       253
+   Financial     0.8333    0.4545    0.5882        22
+       Other     1.0000    0.2000    0.3333        15
+
+    accuracy                         0.8873      4429
+   macro avg     0.8826    0.6281    0.6952      4429
+weighted avg     0.8861    0.8873    0.8833      4429

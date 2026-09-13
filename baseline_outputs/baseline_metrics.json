@@ -1,0 +1,122 @@
+{
+  "primary_metric": "macro_f1",
+  "macro_f1": 0.6952217782730101,
+  "weighted_f1": 0.8832772766802233,
+  "accuracy": 0.887333483856401,
+  "invalid_output_rate": 0.0,
+  "per_class": {
+    "Read": {
+      "precision": 0.916637960730279,
+      "recall": 0.9446219382321619,
+      "f1": 0.9304195804195804,
+      "support": 2817
+    },
+    "Write": {
+      "precision": 0.8141361256544503,
+      "recall": 0.858325666973321,
+      "f1": 0.8356471115091805,
+      "support": 1087
+    },
+    "Execute": {
+      "precision": 0.7635135135135135,
+      "recall": 0.4808510638297872,
+      "f1": 0.5900783289817232,
+      "support": 235
+    },
+    "Destructive": {
+      "precision": 0.967741935483871,
+      "recall": 0.8300395256916996,
+      "f1": 0.8936170212765957,
+      "support": 253
+    },
+    "Financial": {
+      "precision": 0.8333333333333334,
+      "recall": 0.45454545454545453,
+      "f1": 0.5882352941176471,
+      "support": 22
+    },
+    "Other": {
+      "precision": 1.0,
+      "recall": 0.2,
+      "f1": 0.3333333333333333,
+      "support": 15
+    }
+  },
+  "confusion_matrix": [
+    [
+      2661,
+      128,
+      25,
+      3,
+      0,
+      0
+    ],
+    [
+      142,
+      933,
+      7,
+      3,
+      2,
+      0
+    ],
+    [
+      75,
+      47,
+      113,
+      0,
+      0,
+      0
+    ],
+    [
+      12,
+      29,
+      2,
+      210,
+      0,
+      0
+    ],
+    [
+      3,
+      7,
+      1,
+      1,
+      10,
+      0
+    ],
+    [
+      10,
+      2,
+      0,
+      0,
+      0,
+      3
+    ]
+  ],
+  "efficiency": {
+    "training_seconds": 6.658166700042784,
+    "inference_seconds": 0.6326322999084368,
+    "validation_records": 4429,
+    "latency_ms_per_record": 0.14283863172464142,
+    "throughput_records_per_second": 7000.907163040877,
+    "model_size_mb": 15.064230918884277,
+    "peak_process_memory_mb": 292.16796875,
+    "memory_increase_mb": 122.36328125
+  },
+  "configuration": {
+    "text_fields": [
+      "name",
+      "description",
+      "input_schema"
+    ],
+    "excluded_fields": [
+      "record_id",
+      "server_slug",
+      "category"
+    ],
+    "features": "word TF-IDF unigrams and bigrams",
+    "classifier": "LinearSVC",
+    "C": 2.0,
+    "class_weight": null,
+    "random_state": 42
+  }
+}

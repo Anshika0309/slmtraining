@@ -1,0 +1,7 @@
+actual\predicted,Read,Write,Execute,Destructive,Financial,Other
+Read,2661,128,25,3,0,0
+Write,142,933,7,3,2,0
+Execute,75,47,113,0,0,0
+Destructive,12,29,2,210,0,0
+Financial,3,7,1,1,10,0
+Other,10,2,0,0,0,3

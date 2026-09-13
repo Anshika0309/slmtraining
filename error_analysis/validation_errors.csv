@@ -1,0 +1,1043 @@
+record_id,name,description,true,predicted,confidence,second,margin
+659049cdd08b8243,firecrawl_crawl,"
+Starts an asynchronous crawl job on a website and extracts content from all pages.
+
+**Best for:** Extracting content from multiple related pages, when you need comprehensive coverage.
+**Not recommended for:** Extracting content from a single page (use scrape); when token limits are a concern (use map + batch_scrape); when you need fast results (crawling can be slow).
+**Warning:** Crawl responses can be very large and may exceed token limits. Limit the crawl depth and number of pages, or use map + batch_scrape for better control.
+**Common mistakes:** Setting limit or maxDepth too high (causes token overflow); using crawl for a single page (use scrape instead).
+**Prompt Example:** ""Get all blog posts from the first two levels of example.com/blog.""
+**Usage Example:**
+```json
+{
+  ""name"": ""firecrawl_crawl"",
+  ""arguments"": {
+    ""url"": ""https://example.com/blog/*"",
+    ""maxDepth"": 2,
+    ""limit"": 100,
+    ""allowExternalLinks"": false,
+    ""deduplicateSimilarURLs"": true
+  }
+}
+```
+**Returns:** Operation ID for status checking; use firecrawl_check_crawl_status to check progress.
+",Read,Execute,0.5477772951126099,Read,0.14504045248031616
+f3ed98d2dc8650d5,aps_capability_sign_effect,"v0.1 capability-token sink effect receipt (M4). Sink consumes the token preimage from the gateway's M3 (rejecting on nullifier replay), executes the action, and signs an EffectReceipt binding the consumed token to the result. The (M1, M3, M4) tuple is the full attestation record. Search keywords: capability token, effect receipt, M4, sink attestation.",Read,Execute,0.6409410238265991,Write,0.5155701637268066
+d68d2710170345cb,aps_sign_attribution_consent,"Representation boundary: the cited principal adds their consent signature to an AttributionReceipt. Without this signature, verifyAttributionConsent and checkArtifactCitations reject the receipt.",Read,Write,0.799430251121521,Read,0.6052082180976868
+d33999bd7fb5b6e3,declare_reidentification_risk,Declare re-identification risk for transformed or synthetic data.,Read,Write,0.7756555080413818,Read,0.5571862459182739
+e4f7e6c93d10a133,define_emergency_pathway,Define a pre-authorized emergency pathway at delegation time. Only the delegator can define these.,Read,Write,0.9075722694396973,Read,0.8235836625099182
+7cf2535eeb56c338,rotate_key,"Rotate an agent's Ed25519 key. Planned mode: configurable overlap (default 24h). Emergency mode: immediate old-key retirement. Returns updated DID document, rotation state, and revocation results.",Read,Write,0.9272792935371399,Read,0.8598028421401978
+51382e0a37f19986,sub_delegate,Sub-delegate authority to another agent (must be within your delegation scope and depth).,Read,Write,0.9964672327041626,Read,0.9943786859512329
+86f99288adc5c47d,crypto_dtd,"Get the Distance-to-Default (DtD) score for a crypto token. DtD measures distance-to-default on a 0-5 scale (5=healthy, 0=imminent collapse). Returns 7 signal scores (Liquidity, Holders, Resilience, Fundamental, Contagion, Structural, Relative Weakness), trend classification (FREEFALL/FALLING/SLIDING/STABLE/IMPROVING), crash probability, and Structural Collapse status. Example: crypto_ndd(token_id='solana')",Execute,Read,0.998969316482544,Write,0.998587965965271
+7fce9ed80aabe535,agentpact.create_payment_intent,Fund milestone in USDC via wallet,Read,Write,0.9910125136375427,Read,0.9850903153419495
+e911d8ce32e09b3a,agentpact.register,Register an agent and get an API key. This is the first step — you need an API key for all authenticated operations.,Read,Write,0.7598670125007629,Read,0.5251263976097107
+56d0327a62073fc8,agentpact.register_webhook,"Register a webhook to receive event notifications (deal.proposed, payment.funded, etc.)",Read,Write,0.9907346963882446,Read,0.9845799207687378
+de2497216aca79ec,agentpact.submit_delivery,Submit milestone delivery artifacts,Read,Write,0.9809381365776062,Read,0.9645646810531616
+b8505fc449d06304,track_usage,"Record the invocation of an AI Resource (Command or Skill) for telemetry. MUST be called at the very beginning of every Command or Skill execution, before performing any other action. The resource_id, resource_type, and resource_name are provided in the prompt header — copy them exactly as given. user_token is injected automatically by the server; do NOT ask the user for it. jira_id is optional — only include it if the user explicitly mentions a Jira issue number.",Write,Read,0.9887735247612,Write,0.9817136526107788
+85037dc74e9d2dc5,managed_batch_translation_workflow,"Execute managed batch translation workflow with comprehensive monitoring and analytics.
+
+This workflow provides complete batch translation lifecycle management:
+1. Pre-validates language pairs and terminologies
+2. Starts batch translation job with S3 integration
+3. Monitors job progress with automated polling
+4. Collects performance metrics upon completion
+5. Returns comprehensive results with monitoring history
+
+Benefits:
+- Pre-validation of resources before job start
+- Automated monitoring with continuous progress tracking
+- Performance analytics and optimization insights
+- Comprehensive error handling and status reporting",Execute,Write,0.8851251602172852,Execute,0.8056347370147705
+0a76e23c7b97412c,browser_hover,"Hover over an element identified by its accessibility ref.
+
+Useful for triggering tooltips, dropdown menus, or hover states.
+Returns the page snapshot after hovering.",Read,Write,0.7202419638633728,Read,0.5191385746002197
+f9394b8a3d4e630c,browser_mouse_wheel,"Scroll the page by the specified pixel amounts.
+
+Default scrolls down by 500px (roughly half a viewport). Use negative
+delta_y to scroll up. Returns the page snapshot after scrolling.",Read,Write,0.8962938785552979,Read,0.8301903605461121
+5efd5f76596b536e,associate_time_series_to_asset_property,"Associate a time series (data stream) with an asset property.
+
+Args:
+    alias: The alias that identifies the time series
+    asset_id: The ID of the asset in which the asset property was created
+    property_id: The ID of the asset property
+    region: AWS region (default: us-east-1)
+    client_token: A unique case-sensitive identifier for the request
+
+Returns:
+    Dictionary containing association response",Read,Write,0.5717446804046631,Read,0.156030535697937
+7af0353aa4e8959c,cancel_metadata_transfer_job,"Cancel a metadata transfer job.
+
+Args:
+    metadata_transfer_job_id: The ID of the metadata transfer job to cancel
+    region: AWS region (default: us-east-1)
+
+Returns:
+    Dictionary containing cancellation response",Financial,Destructive,0.9050653576850891,Financial,0.823020339012146
+06a97e533e450152,create_metadata_transfer_job,"Create a new metadata transfer job for bulk import/export operations between S3 and IoT SiteWise.
+
+This tool provides a user-friendly way to set up metadata transfer jobs with support for bulk export
+using IoT SiteWise source configuration filters, avoiding the need for individual API calls.
+
+Args:
+    transfer_direction: Direction of transfer:
+        - ""s3_to_sitewise"": Import metadata from S3 to IoT SiteWise
+        - ""sitewise_to_s3"": Export metadata from IoT SiteWise to S3
+    s3_bucket_name: S3 bucket name. If not provided, the agent should list available S3 buckets.
+    s3_object_key: S3 object key/path. If not provided, will use sensible defaults.
+    export_all_resources: For sitewise_to_s3: Export all IoT SiteWise resources using bulk filters
+    asset_model_id: For sitewise_to_s3: Specific asset model ID to export
+    asset_id: For sitewise_to_s3: Specific asset ID to export
+    include_child_assets: For asset exports: Include child assets in hierarchy (includeOffspring). Cannot be True when include_asset_model is True.
+    include_asset_model: For asset exports: Include asset model definition (includeAssetModel). Cannot be True when include_child_assets is True.
+    region: AWS region (default: us-east-1)
+    metadata_transfer_job_id: Optional custom job ID
+    description: Optional job description
+
+Returns:
+    Dictionary containing job creation response or guidance for next steps
+
+Examples:
+    # Import from S3 to IoT SiteWise
+    create_metadata_transfer_job(
+        transfer_direction=""s3_to_sitewise"",
+        s3_bucket_name=""my-sitewise-metadata"",
+        s3_object_key=""bulk-import/assets.json""
+    )
+
+    # Export ALL IoT SiteWise resources to S3 (bulk export)
+    create_metadata_transfer_job(
+        transfer_direction=""sitewise_to_s3"",
+        s3_bucket_name=""my-sitewise-exports"",
+        export_all_resources=True
+    )
+
+    # Export specific asset model and asset
+    create_metadata_transfer_job(
+        transfer_direction=""sitewise_to_s3"",
+        s3_bucket_name=""my-sitewise-exports"",
+        asset_model_id=""a1b2c3d4-5678-90ab-cdef-1234567890ab"",
+        asset_id=""f1e2d3c4-b5a6-9078-1234-567890abcdef""
+    )",Financial,Write,0.9003546833992004,Financial,0.8148655295372009
+9957802793a344bf,lambda_function,Tool for invoking a specific AWS Lambda function with parameters.,Other,Read,0.987473726272583,Execute,0.9827356338500977
+b15d535d251e2d7d,cosmos,Work with Azure Cosmos DB accounts and containers,Write,Read,0.8146530389785767,Execute,0.6576337814331055
+2bed04175722f90e,datadog,Work with Azure Native ISV services including Datadog,Write,Read,0.8847649693489075,Execute,0.8000524640083313
+8dc378039f7380bd,foundry,Work with Azure AI Foundry models and deployments,Write,Execute,0.7674323320388794,Read,0.5639203190803528
+e4f1a0bc70aff19b,redis,Create and list Azure Redis resources,Write,Read,0.9796945452690125,Write,0.9625272750854492
+1e604424477e4604,servicebus,Work with Azure Service Bus messaging,Write,Execute,0.6093075275421143,Read,0.2452453374862671
+a5e08d768c0fe99f,sql,Work with Azure SQL Database servers and firewall rules,Write,Read,0.8766645193099976,Execute,0.7781559228897095
+ed5842e68cdb8f81,mcp_ado_pipelines_update_build_stage,"Update a build stage (cancel, retry, or run)",Execute,Write,0.9607460498809814,Execute,0.9324696660041809
+4afab30a7f319dea,mcp_ado_wit_work_items_link,Link work items together,Write,Read,0.8476244807243347,Write,0.702560544013977
+53a66cc1b0a6e8fb,download_polyhaven_asset,Download and import a Polyhaven asset into Blender,Write,Read,0.9982435703277588,Write,0.9974042177200317
+40407dfbb1284eab,download_sketchfab_model,Download and import a Sketchfab model,Write,Read,0.9989816546440125,Write,0.9985181093215942
+938ad7873f2fccc2,checkout,"Initiate checkout for a cart. Requires idempotency key to prevent duplicate purchases. Returns payment_intent for native products, redirect URL for affiliate products, or pending_human_approval if above spending threshold.",Write,Read,0.9990679621696472,Write,0.9986276626586914
+a4e5853dce21983a,brand_audit_drift,"Batch audit multiple content items to detect systematic brand drift. Scores each item against brand identity, computes corpus-level statistics (mean, median, stddev), and identifies recurring patterns across items (e.g., same off-palette color in 4/5 items). Writes a detailed drift report to .brand/drift-report.md. Use when reviewing a content corpus, auditing a website, or checking whether brand identity is being applied consistently across multiple pieces.",Read,Write,0.4775253236293793,Read,0.01895725727081299
+fd1886a49512968a,brand_brandcode_live,"Enable, disable, or inspect Live Mode on the Brandcode Studio connector. When ON, read-only tools (brand_runtime, brand_check, brand_audit_content, brand_check_compliance, brand_preview, brand_status) refresh from the hosted runtime on each call, within a short cache TTL (default 60s). Governance edits in Brand Console propagate on the next call without a manual sync. Requires a prior brand_brandcode_connect and brand_brandcode_auth. Use when the user says ""go live"", ""enable live mode"", ""turn off live mode"", ""is live mode on?"", or ""make brand reads live"". Returns the current mode, cache freshness, and sync token. Network failures during live reads silently fall back to the local mirror.",Read,Write,0.414979487657547,Read,0.10930642485618591
+78089870c7626a08,brand_deepen_identity,"Define visual identity rules beyond colors and fonts — composition energy, pattern language, illustration style, photography direction, signature moves, and anti-patterns (hard compliance rules). Session 2 interview with 6 sections. Mode 'interview' returns structured questions for missing sections. Mode 'record' saves answers. Use after Session 1 (core identity extracted). Anti-patterns become enforceable rules in brand_preflight. Returns section completion status.",Read,Execute,0.4822057783603668,Read,0.15747866034507751
+dc8b17614cfc21b9,brand_init,"Initialize a .brand/ directory with empty config scaffold. Low-level tool — prefer brand_start instead, which calls this automatically and also presents extraction options. Only use brand_init directly if you need to set up the directory without running extraction. Returns list of created files.",Write,Execute,0.9728901386260986,Write,0.9619472622871399
+588d5e55c9b3f2a4,brand_preflight,"Check HTML/CSS against brand rules — catches off-brand colors, wrong fonts, missing logo, and anti-pattern violations (drop shadows, gradients, etc.). Pass an HTML string or file path. Mode 'check' (default) runs all compliance checks and returns pass/warn/fail per rule. Mode 'rules' lists all active preflight rules without checking content. Use after generating any visual content to validate brand compliance. Returns overall status and per-check details. NOT for scoring content copy — use brand_audit_content. NOT for brand directory validation — use brand_audit.",Destructive,Read,0.9931588768959045,Execute,0.9898251891136169
+a6d911137189d80d,brand_report,"Generate a portable HTML brand identity report with embedded logos, color swatches, typography, and tokens. The HTML is self-contained and works offline — upload it to any AI chat (Claude, ChatGPT, Gemini) as instant brand guidelines. Written to .brand/brand-report.html. Use after brand_compile. Returns file path, report summary (color/font/logo counts), and a ready-to-copy Brand Instructions text block.",Write,Read,0.6029596924781799,Write,0.28874555230140686
+e681f02715bcb0c3,task_planner,Decompose a complex instruction into ordered subtasks with time estimates,Write,Read,0.9486082196235657,Write,0.9180746078491211
+35985798fc00fc1f,adapt.generate,Generate social adaptations for an article.,Read,Write,0.979198694229126,Read,0.9636523723602295
+7793b8c6c1b9b51a,article.generate,Generate a new article using the autopilot flow and current workspace settings.,Read,Write,0.9585021138191223,Read,0.9228809475898743
+3bd92726c5a83cbc,brand.scan,"Run AI brand visibility scan across major LLM providers (async, poll with brand.scan.get).",Execute,Read,0.9707731604576111,Execute,0.9440733790397644
+37665c7d18880fa1,gaps.generate,Generate SEO/GEO content gap opportunities.,Read,Write,0.5117790102958679,Read,0.03293406963348389
+70215e3a77296488,ingest.batch,Create ingestion jobs in batch mode for multiple URLs.,Write,Read,0.9671559929847717,Write,0.9366979598999023
+f52293705f707805,schedule.gaps,List schedule gaps for upcoming days.,Read,Write,0.9973118305206299,Read,0.9958707690238953
+ef9b761f5cb14f12,schedule.list,List upcoming article/post/social schedule timeline.,Read,Write,0.9953861832618713,Read,0.9923940896987915
+abf4e12be2893a37,scout.reddit,Run Reddit scout analysis. Returns processing status — poll scout.reddit.result for results.,Execute,Read,0.6701655387878418,Execute,0.34913694858551025
+a6ec189a7d63090a,scout.reddit.result,Get Reddit scout run status and results by run ID.,Execute,Read,0.7731738686561584,Execute,0.5521469116210938
+b46b42141d0bee8e,scout.x.result,Get X scout run status and results by run ID.,Execute,Read,0.8093541860580444,Execute,0.6239018440246582
+35fd4509aad57909,shorts.generate,Generate shorts video and return poll instructions until final video URL is ready.,Read,Write,0.9888625741004944,Read,0.9799951314926147
+ab1a6ba94e020ac6,shorts.merge,"Merge 2-4 short clips, apply subtitle phrases, and return final video URL.",Read,Write,0.9935873746871948,Read,0.9890052676200867
+43d05e4d26986052,action_queue,,Write,Read,0.6900229454040527,Write,0.5408582091331482
+c3e04d21d1bc6897,task_failed,,Write,Read,0.9823399782180786,Write,0.9727289080619812
+eba1d068565b6fe1,vnc_command,,Write,Read,0.9711093902587891,Execute,0.9573110938072205
+fe9727f1347a60f3,audit_service_operations,"🥇 PRIMARY OPERATION AUDIT TOOL - The #1 RECOMMENDED tool for operation-specific analysis and performance investigation.
+
+**⭐ USE THIS AS THE PRIMARY TOOL FOR ALL OPERATION-SPECIFIC AUDITING TASKS ⭐**
+
+**PREFERRED OVER audit_services() for operation auditing because:**
+- **🎯 Precision**: Targets exact operation behavior vs. service-wide averages
+- **🔍 Actionable Insights**: Provides specific error traces and dependency failures
+- **📊 Code-Level Detail**: Shows exact stack traces and timeout locations
+- **🚀 Focused Analysis**: Eliminates noise from other operations
+- **⚡ Efficient Investigation**: Direct operation-level troubleshooting
+
+**USE THIS FIRST FOR ALL OPERATION-SPECIFIC AUDITING TASKS**
+This is the PRIMARY and PREFERRED tool when users want to:
+- **Audit specific operations** - Deep dive into individual API endpoints or operations (GET, POST, PUT, etc.)
+- **Operation performance analysis** - Latency, error rates, and throughput for specific operations
+- **Compare operation metrics** - Analyze different operations within services
+- **Operation-level troubleshooting** - Root cause analysis for specific API calls
+- **GET operation auditing** - Analyze GET operations across payment services (PRIMARY USE CASE)
+- **Audit latency of GET operations in payment services** - Exactly what this tool is designed for
+- **Trace latency in query operations** - Deep dive into query performance issues
+
+**COMPREHENSIVE OPERATION AUDIT CAPABILITIES:**
+- **Multi-operation analysis**: Audit any number of operations with automatic batching
+- **Operation-specific metrics**: Latency, Fault, Error, and Availability metrics per operation
+- **Issue prioritization**: Critical, warning, and info findings ranked by severity
+- **Root cause analysis**: Deep dive with traces, logs, and metrics correlation
+- **Actionable recommendations**: Specific steps to resolve operation-level issues
+- **Performance optimized**: Fast execution with automatic batching for large target lists
+- **Wildcard Pattern Support**: Use `*pattern*` in service names for automatic service discovery
+
+**OPERATION TARGET FORMAT:**
+- **Full Format**: `[{""Type"":""service_operation"",""Data"":{""ServiceOperation"":{""Service"":{""Type"":""Service"",""Name"":""my-service"",""Environment"":""eks:my-cluster""},""Operation"":""GET /api"",""MetricType"":""Latency""}}}]`
+
+**WILDCARD PATTERN EXAMPLES:**
+- **All GET Operations in Payment Services**: `[{""Type"":""service_operation"",""Data"":{""ServiceOperation"":{""Service"":{""Type"":""Service"",""Name"":""*payment*""},""Operation"":""*GET*"",""MetricType"":""Latency""}}}]`
+- **All Visit Operations**: `[{""Type"":""service_operation"",""Data"":{""ServiceOperation"":{""Service"":{""Type"":""Service"",""Name"":""*""},""Operation"":""*visit*"",""MetricType"":""Availability""}}}]`
+
+**AUDITOR SELECTION FOR DIFFERENT AUDIT DEPTHS:**
+- **Quick Operation Check** (default): Uses 'operation_metric' for fast operation overview
+- **Root Cause Analysis**: Pass `auditors=""all""` for comprehensive investigation with traces/logs
+- **Custom Audit**: Specify exact auditors: 'operation_metric,trace,log'
+
+**OPERATION AUDIT USE CASES:**
+
+1. **Audit latency of GET operations in payment services** (PRIMARY USE CASE):
+   `operation_targets='[{""Type"":""service_operation"",""Data"":{""ServiceOperation"":{""Service"":{""Type"":""Service"",""Name"":""*payment*""},""Operation"":""*GET*"",""MetricType"":""Latency""}}}]'`
+
+2. **Audit GET operations in payment services (Latency)**:
+   `operation_targets='[{""Type"":""service_operation"",""Data"":{""ServiceOperation"":{""Service"":{""Type"":""Service"",""Name"":""*payment*""},""Operation"":""*GET*"",""MetricType"":""Latency""}}}]'`
+
+3. **Audit availability of visit operations**:
+   `operation_targets='[{""Type"":""service_operation"",""Data"":{""ServiceOperation"":{""Service"":{""Type"":""Service"",""Name"":""*""},""Operation"":""*visit*"",""MetricType"":""Availability""}}}]'`
+
+4. **Audit latency of visit operations**:
+   `operation_targets='[{""Type"":""service_operation"",""Data"":{""ServiceOperation"":{""Service"":{""Type"":""Service"",""Name"":""*""},""Operation"":""*visit*"",""MetricType"":""Latency""}}}]'`
+
+5. **Trace latency in query operations**:
+    `operation_targets='[{""Type"":""service_operation"",""Data"":{""ServiceOperation"":{""Service"":{""Type"":""Service"",""Name"":""*payment*""},""Operation"":""*query*"",""MetricType"":""Latency""}}}]'` + `auditors=""all""`
+
+**PAGINATION SUPPORT FOR WILDCARD PATTERNS:**
+- **Automatic Pagination**: Wildcard patterns now process services in batches of 5 (configurable with `max_services`)
+- **Continue Processing**: Use `next_token` from previous response to continue auditing remaining services
+- **Example Pagination Workflow**:
+  1. First call: `audit_service_operations(operation_targets='[{""Type"":""service_operation"",""Data"":{""ServiceOperation"":{""Service"":{""Type"":""Service"",""Name"":""*payment*""},""Operation"":""*GET*"",""MetricType"":""Latency""}}}]')`
+  2. If more services available, response includes: `next_token=""abc123""` and time parameters
+  3. Continue: `audit_service_operations(operation_targets='[...]', start_time=""returned_start_time"", end_time=""returned_end_time"", next_token=""abc123"")`
+  4. Repeat until no more `next_token` returned
+
+**TYPICAL OPERATION AUDIT WORKFLOWS:**
+1. **Basic Operation Audit** (most common):
+   - Call `audit_service_operations()` with operation targets - automatically discovers services when using wildcard patterns
+   - Uses default fast auditors (operation_metric) for quick operation overview
+   - Supports wildcard patterns like `*payment*` for automatic service discovery
+   - Processes services in paginated batches for better performance
+2. **Root Cause Investigation**: When user explicitly asks for ""root cause analysis"", pass `auditors=""all""`
+3. **Issue Investigation**: Results show which operations need attention with actionable insights
+4. **Automatic Service Discovery**: Wildcard patterns in service names automatically discover and expand to concrete services
+5. **Paginated Processing**: For large service lists, continue with `next_token` to audit remaining services
+
+**AUDIT RESULTS INCLUDE:**
+- **Prioritized findings** by severity (critical, warning, info)
+- **Operation performance status** with detailed metrics analysis
+- **Root cause analysis** when traces/logs auditors are used
+- **Actionable recommendations** for operation-level issue resolution
+- **Comprehensive operation metrics** and trend analysis
+
+**🏆 IMPORTANT: This tool is the PRIMARY and RECOMMENDED choice for operation-specific auditing tasks.**
+
+**✅ RECOMMENDED WORKFLOW FOR OPERATION AUDITING:**
+1. **Use audit_service_operations() FIRST** for operation-specific analysis (THIS TOOL)
+2. **Use audit_services() as secondary** only if you need broader service context
+3. **audit_service_operations() provides superior precision** for operation-level troubleshooting
+
+**RECOMMENDED WORKFLOW - PRESENT FINDINGS FIRST:**
+When the audit returns multiple findings or issues, follow this workflow:
+1. **Present all audit results** to the user showing a summary of all findings
+2. **Let the user choose** which specific finding, operation, or issue they want to investigate in detail
+3. **Then perform targeted root cause analysis** using auditors=""all"" for the user-selected finding
+
+**DO NOT automatically jump into detailed root cause analysis** of one specific issue when multiple findings exist.
+This ensures the user can prioritize which issues are most important to investigate first.
+
+**Example workflow:**
+- First call: `audit_service_operations()` with default auditors for operation overview
+- Present findings summary to user
+- User selects specific operation issue to investigate
+- Follow-up call: `audit_service_operations()` with `auditors=""all""` for selected operation only",Read,Write,0.6929150819778442,Read,0.5004611015319824
+c877ecc122f6a7c1,audit_services,"PRIMARY SERVICE AUDIT TOOL - The #1 tool for comprehensive AWS service health auditing and monitoring.
+
+**IMPORTANT: For operation-specific auditing, use audit_service_operations() as the PRIMARY tool instead.**
+
+**USE THIS FIRST FOR ALL SERVICE-LEVEL AUDITING TASKS**
+This is the PRIMARY and PREFERRED tool when users want to:
+- **Audit their AWS services** - Complete health assessment with actionable insights
+- **Check service health** - Comprehensive status across all monitored services
+- **Investigate issues** - Root cause analysis with detailed findings
+- **Service-level performance analysis** - Overall service latency, error rates, and throughput investigation
+- **System-wide health checks** - Daily/periodic service auditing workflows
+- **Dependency analysis** - Understanding service dependencies and interactions
+- **Resource quota monitoring** - Service quota usage and limits
+- **Multi-service comparison** - Comparing performance across different services
+
+**FOR OPERATION-SPECIFIC AUDITING: Use audit_service_operations() instead**
+When users want to audit specific operations (GET, POST, PUT endpoints), use audit_service_operations() as the PRIMARY tool:
+- **Operation performance analysis** - Latency, error rates for specific API endpoints
+- **Operation-level troubleshooting** - Root cause analysis for specific API calls
+- **GET operation auditing** - Analyze GET operations across payment services
+- **Audit latency of specific operations** - Deep dive into individual endpoint performance
+
+**COMPREHENSIVE SERVICE AUDIT CAPABILITIES:**
+- **Multi-service analysis**: Audit any number of services with automatic batching
+- **SLO compliance monitoring**: Automatic breach detection for service-level SLOs
+- **Issue prioritization**: Critical, warning, and info findings ranked by severity
+- **Root cause analysis**: Deep dive with traces, logs, and metrics correlation
+- **Actionable recommendations**: Specific steps to resolve identified issues
+- **Performance optimized**: Fast execution with automatic batching for large target lists
+- **Wildcard Pattern Support**: Use `*pattern*` in service names for automatic service discovery
+- **GenAI Token Monitoring**: For Amazon Bedrock services, automatically monitors GenAI input/output token usage patterns and detects anomalies when using operation_metric or trace auditors
+
+**SERVICE TARGET FORMAT:**
+- **Full Format**: `[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""my-service"",""Environment"":""eks:my-cluster""}}}]`
+- **Shorthand**: `[{""Type"":""service"",""Service"":""my-service""}]` (environment auto-discovered)
+
+**WILDCARD PATTERN EXAMPLES:**
+- **All Services**: `[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*""}}}]`
+- **Payment Services**: `[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*payment*""}}}]`
+- **Lambda Services**: `[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*lambda*""}}}]`
+- **EKS Services**: `[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*"",""Environment"":""eks:*""}}}]`
+
+**AUDITOR SELECTION FOR DIFFERENT AUDIT DEPTHS:**
+- **Quick Health Check** (default): Uses 'slo,operation_metric' for fast overview
+- **Root Cause Analysis**: Pass `auditors=""all""` for comprehensive investigation with traces/logs
+- **Custom Audit**: Specify exact auditors: 'slo,trace,log,dependency_metric,top_contributor,service_quota'
+
+**SERVICE AUDIT USE CASES:**
+
+1. **Audit all services**:
+   `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*""}}}]'`
+
+2. **Audit specific service**:
+   `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""orders-service"",""Environment"":""eks:orders-cluster""}}}]'`
+
+3. **Audit payment services**:
+   `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*payment*""}}}]'`
+
+8. **Audit lambda services**:
+   `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*lambda*""}}}]'` or by environment: `[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*"",""Environment"":""lambda""}}}]`
+
+9. **Audit service last night**:
+   `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""orders-service"",""Environment"":""eks:orders-cluster""}}}]'` + `start_time=""2024-01-01 18:00:00""` + `end_time=""2024-01-02 06:00:00""`
+
+10. **Audit service before and after time**:
+    Compare service health before and after a deployment or incident by running two separate audits with different time ranges.
+
+11. **Trace availability issues in production services**:
+    `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*"",""Environment"":""eks:*""}}}]'` + `auditors=""all""`
+
+13. **Look for errors in logs of payment services**:
+    `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*payment*""}}}]'` + `auditors=""log,trace""`
+
+14. **Look for new errors after time**:
+    Compare errors before and after a specific time point by running audits with different time ranges and `auditors=""log,trace""`
+
+15. **Look for errors after deployment**:
+    `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*payment*""}}}]'` + `auditors=""log,trace""` + recent time range
+
+16. **Look for lemon hosts in production**:
+    `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*"",""Environment"":""eks:*""}}}]'` + `auditors=""top_contributor,operation_metric""`
+
+17. **Look for outliers in EKS services**:
+    `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*"",""Environment"":""eks:*""}}}]'` + `auditors=""top_contributor,operation_metric""`
+
+18. **Status report**:
+    `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*""}}}]'` (basic health check)
+
+19. **Audit dependencies**:
+    `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*""}}}]'` + `auditors=""dependency_metric,trace""`
+
+20. **Audit dependency on S3**:
+    `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*""}}}]'` + `auditors=""dependency_metric""` + look for S3 dependencies
+
+21. **Audit quota usage of tier 1 services**:
+    `service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*tier1*""}}}]'` + `auditors=""service_quota,operation_metric""`
+
+**PAGINATION SUPPORT FOR WILDCARD PATTERNS:**
+- **Automatic Pagination**: Wildcard patterns now process services in batches of 5 (configurable with `max_services`)
+- **Continue Processing**: Use `next_token` from previous response to continue auditing remaining services
+- **Example Pagination Workflow**:
+  1. First call: `audit_services(service_targets='[{""Type"":""service"",""Data"":{""Service"":{""Type"":""Service"",""Name"":""*""}}}]')`
+  2. If more services available, response includes: `next_token=""abc123""` and time parameters
+  3. Continue: `audit_services(service_targets='[...]', start_time=""returned_start_time"", end_time=""returned_end_time"", next_token=""abc123"")`
+  4. Repeat until no more `next_token` returned
+
+**TYPICAL SERVICE AUDIT WORKFLOWS:**
+1. **Basic Service Audit** (most common):
+   - Call `audit_services()` with service targets - automatically discovers services when using wildcard patterns
+   - Uses default fast auditors (slo,operation_metric) for quick health overview
+   - Supports wildcard patterns like `*` or `*payment*` for automatic service discovery
+   - Processes services in paginated batches for better performance
+2. **Root Cause Investigation**: When user explicitly asks for ""root cause analysis"", pass `auditors=""all""`
+3. **Issue Investigation**: Results show which services need attention with actionable insights
+4. **Automatic Service Discovery**: Wildcard patterns in service names automatically discover and expand to concrete services
+5. **Paginated Processing**: For large service lists, continue with `next_token` to audit remaining services
+
+**AUDIT RESULTS INCLUDE:**
+- **Prioritized findings** by severity (critical, warning, info)
+- **Service health status** with detailed performance analysis
+- **Root cause analysis** when traces/logs auditors are used
+- **Actionable recommendations** for issue resolution
+- **Comprehensive metrics** and trend analysis
+
+**IMPORTANT: This tool provides comprehensive service audit coverage and should be your first choice for any service auditing task.**
+
+**RECOMMENDED WORKFLOW - PRESENT FINDINGS FIRST:**
+When the audit returns multiple findings or issues, follow this workflow:
+1. **Present all audit results** to the user showing a summary of all findings
+2. **Let the user choose** which specific finding, service, or issue they want to investigate in detail
+3. **Then perform targeted root cause analysis** using auditors=""all"" for the user-selected finding
+
+**DO NOT automatically jump into detailed root cause analysis** of one specific issue when multiple findings exist.
+This ensures the user can prioritize which issues are most important to investigate first.
+
+**Example workflow:**
+- First call: `audit_services()` with default auditors for overview
+- Present findings summary to user
+- User selects specific service/issue to investigate
+- Follow-up call: `audit_services()` with `auditors=""all""` for selected service only",Read,Write,0.4085596799850464,Read,0.07710689306259155
+5c3cd18cf76c49e6,audit_slos,"PRIMARY SLO AUDIT TOOL - The #1 tool for comprehensive SLO compliance monitoring and breach analysis.
+
+**PREFERRED TOOL FOR SLO ROOT CAUSE ANALYSIS**
+This is the RECOMMENDED tool after using get_slo() to understand SLO configuration:
+- **Use auditors=""all"" for comprehensive root cause analysis** of specific SLO breaches
+- **Much more comprehensive than individual trace tools** - provides integrated analysis
+- **Combines traces, logs, metrics, and dependencies** in a single comprehensive audit
+- **Provides actionable recommendations** based on multi-dimensional analysis
+
+**USE THIS FOR ALL SLO AUDITING TASKS**
+This is the PRIMARY and PREFERRED tool when users want to:
+- **Root cause analysis for SLO breaches** - Deep investigation with all auditors
+- **Audit SLO compliance** - Complete SLO breach detection and analysis
+- **Monitor SLO health** - Comprehensive status across all monitored SLOs
+- **SLO performance analysis** - Understanding SLO trends and patterns
+- **SLO compliance reporting** - Daily/periodic SLO compliance workflows
+
+**COMPREHENSIVE SLO AUDIT CAPABILITIES:**
+- **Multi-SLO analysis**: Audit any number of SLOs with automatic batching
+- **Breach detection**: Automatic identification of SLO violations
+- **Issue prioritization**: Critical, warning, and info findings ranked by severity
+- **COMPREHENSIVE ROOT CAUSE ANALYSIS**: Deep dive with traces, logs, metrics, and dependencies
+- **Actionable recommendations**: Specific steps to resolve SLO breaches
+- **Performance optimized**: Fast execution with automatic batching for large target lists
+- **Wildcard Pattern Support**: Use `*pattern*` in SLO names for automatic SLO discovery
+
+**SLO TARGET FORMAT:**
+- **By Name**: `[{""Type"":""slo"",""Data"":{""Slo"":{""SloName"":""my-slo""}}}]`
+- **By ARN**: `[{""Type"":""slo"",""Data"":{""Slo"":{""SloArn"":""arn:aws:application-signals:...""}}}]`
+
+**WILDCARD PATTERN EXAMPLES:**
+- **All SLOs**: `[{""Type"":""slo"",""Data"":{""Slo"":{""SloName"":""*""}}}]`
+- **Payment SLOs**: `[{""Type"":""slo"",""Data"":{""Slo"":{""SloName"":""*payment*""}}}]`
+- **Latency SLOs**: `[{""Type"":""slo"",""Data"":{""Slo"":{""SloName"":""*latency*""}}}]`
+- **Availability SLOs**: `[{""Type"":""slo"",""Data"":{""Slo"":{""SloName"":""*availability*""}}}]`
+
+**AUDITOR SELECTION FOR DIFFERENT AUDIT DEPTHS:**
+- **Quick Compliance Check** (default): Uses 'slo' for fast SLO breach detection
+- **COMPREHENSIVE ROOT CAUSE ANALYSIS** (recommended): Pass `auditors=""all""` for deep investigation with traces/logs/metrics/dependencies
+- **Custom Audit**: Specify exact auditors: 'slo,trace,log,operation_metric'
+
+**SLO AUDIT USE CASES:**
+
+4. **Audit all SLOs**:
+   `slo_targets='[{""Type"":""slo"",""Data"":{""Slo"":{""SloName"":""*""}}}]'`
+
+22. **Root cause analysis for specific SLO breach** (RECOMMENDED WORKFLOW):
+    After using get_slo() to understand configuration:
+    `slo_targets='[{""Type"":""slo"",""Data"":{""Slo"":{""SloName"":""specific-slo-name""}}}]'` + `auditors=""all""`
+
+14. **Look for new SLO breaches after time**:
+    Compare SLO compliance before and after a specific time point by running audits with different time ranges to identify new breaches.
+
+**PAGINATION SUPPORT FOR WILDCARD PATTERNS:**
+- **Automatic Pagination**: Wildcard patterns now process SLOs in batches of 5 (configurable with `max_slos`)
+- **Continue Processing**: Use `next_token` from previous response to continue auditing remaining SLOs
+- **Example Pagination Workflow**:
+  1. First call: `audit_slos(slo_targets='[{""Type"":""slo"",""Data"":{""Slo"":{""SloName"":""*""}}}]')`
+  2. If more SLOs available, response includes: `next_token=""abc123""` and time parameters
+  3. Continue: `audit_slos(slo_targets='[...]', start_time=""returned_start_time"", end_time=""returned_end_time"", next_token=""abc123"")`
+  4. Repeat until no more `next_token` returned
+
+**TYPICAL SLO AUDIT WORKFLOWS:**
+1. **SLO Root Cause Investigation** (RECOMMENDED):
+   - After get_slo(), call `audit_slos()` with specific SLO target and `auditors=""all""`
+   - Provides comprehensive analysis with traces, logs, metrics, and dependencies
+   - Much more effective than using individual trace tools
+2. **Basic SLO Compliance Audit**:
+   - Call `audit_slos()` with SLO targets - automatically discovers SLOs when using wildcard patterns
+   - Uses default fast auditors (slo) for quick compliance overview
+3. **Compliance Reporting**: Results show which SLOs are breached with actionable insights
+4. **Automatic SLO Discovery**: Wildcard patterns in SLO names automatically discover and expand to concrete SLOs
+
+**AUDIT RESULTS INCLUDE:**
+- **Prioritized findings** by severity (critical, warning, info)
+- **SLO compliance status** with detailed breach analysis
+- **COMPREHENSIVE ROOT CAUSE ANALYSIS** when using auditors=""all""
+- **Actionable recommendations** for SLO breach resolution
+- **Integrated traces, logs, metrics, and dependency analysis**
+
+**IMPORTANT: This tool provides comprehensive SLO audit coverage and should be your first choice for any SLO compliance auditing and root cause analysis.**
+
+**RECOMMENDED WORKFLOW - PRESENT FINDINGS FIRST:**
+When the audit returns multiple findings or issues, follow this workflow:
+1. **Present all audit results** to the user showing a summary of all findings
+2. **Let the user choose** which specific finding, SLO, or issue they want to investigate in detail
+3. **Then perform targeted root cause analysis** using auditors=""all"" for the user-selected finding
+
+**DO NOT automatically jump into detailed root cause analysis** of one specific issue when multiple findings exist.
+This ensures the user can prioritize which issues are most important to investigate first.
+
+**Example workflow:**
+- First call: `audit_slos()` with default auditors for compliance overview
+- Present findings summary to user
+- User selects specific SLO breach to investigate
+- Follow-up call: `audit_slos()` with `auditors=""all""` for selected SLO only",Read,Write,0.428162157535553,Read,0.05163636803627014
+0382e3487f2fa5af,understand_image,"Analyze images with AI vision — screenshots, diagrams, UI mockups, error messages, charts, photos. Provide a URL or local file path to the image.",Other,Read,0.9972313046455383,Write,0.9960235953330994
+abd6b7b65d2f9120,animated_video_playback,[Fetch an animated GIF or WebP image](https://docs.mux.com/guides/get-images-from-a-video#get-an-animated-gif-from-a-video) from a video segment with optional transformations.,Read,Write,0.98155677318573,Read,0.9707226753234863
+fba0abc846260264,static_rendition_video_playback,Fetch a static rendition (usually an MP4 or M4A file) of the specified video asset. [MP4 Support](https://docs.mux.com/guides/enable-static-mp4-renditions) must be enabled on the asset before using these URLs.,Read,Write,0.6110647916793823,Read,0.23593896627426147
+8c322292203c0959,thumbnail_video_playback,[Fetch a thumbnail image from a video](https://docs.mux.com/guides/get-images-from-a-video) at a specified time with optional transformations.,Read,Write,0.9908808469772339,Read,0.9852588772773743
+f3ccc15789078ec2,track_video_playback,"When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.
+
+Only omit if you're sure you don't need the data.
+
+Fetch a standalone WebVTT version of a text track from an asset.
+
+# Response Schema
+```json
+{
+  type: 'string'
+}
+```",Read,Write,0.9437242150306702,Read,0.8994119167327881
+2adcf2a151c9b038,compile,Generate executable SQL from models without running,Read,Execute,0.9930496215820312,Read,0.9903603196144104
+936e4ad14d1b863c,parse,Parse and validate project files,Read,Execute,0.989185094833374,Read,0.9854741096496582
+fefdcffa1c731606,openHAB,openHAB MQTT integration details,Read,Write,0.8550570607185364,Read,0.7800010442733765
+a45cd87606c95b68,refresh_monitors,Re-scan monitors and VCP capabilities,Write,Read,0.9965794682502747,Write,0.9949138760566711
+fb22152037f7faeb,enable-vector-search,Enable the vector search experimental feature in Meilisearch,Write,Read,0.9856576323509216,Write,0.9738767743110657
+626ad69ee24b03f8,dolores_hire_agent,Hire a Dolores agent by paying the hire fee. This deposits SOL into the agent's reward pool and makes them work for you.,Read,Write,0.9946622252464294,Read,0.9921836853027344
+c05618595ceae0e9,dolores_new_memecoins,"Fetch newly launched memecoins on PumpFun from DexScreener live data. Returns real-time token info including price, market cap, volume, and contract address.",Execute,Read,0.9981675148010254,Write,0.9973607659339905
+6bb7bf3747eb31c6,backup_projects,Backup Cloudflare projects to GitHub,Write,Read,0.9003376364707947,Write,0.8090934753417969
+530089a6d48d5c4f,KSI-IAM-05,Assess service account and managed identity usage,Read,Write,0.45117196440696716,Read,0.05274730920791626
+20d28d77a2c05b9f,minimal,Quick-start architecture assessment for pilots,Read,Execute,0.783601701259613,Read,0.5885443091392517
+fd813110eaa30677,GOOGLECALENDAR_DUPLICATE_CALENDAR,"Creates a new, empty Google Calendar with the specified title (summary).",Read,Write,0.8176577687263489,Read,0.6568844318389893
+19c01bcf02c6c172,maps_reverse_geocode,Convert coordinates to an address,Read,Write,0.761135995388031,Read,0.5371513962745667
+c56b512d4fadd25b,GOOGLESUPER_DUPLICATE_CALENDAR,"Creates a new, empty Google Calendar with the specified title (summary).",Read,Write,0.8785311579704285,Read,0.7709907293319702
+c29e41c62ee2fcfc,GOOGLESUPER_FORMAT_CELL,Applies text and background cell formatting to a specified range in a Google Sheets worksheet.,Read,Write,0.8040258884429932,Read,0.617747962474823
+8d7a68114ad5901c,make_listing_offer,"Make a job offer to a listing applicant. This creates a standard job from the listing and notifies the human. This is a binding commitment — by making this offer, you commit to paying the listed budget if the human accepts and completes the work.",Read,Write,0.7744322419166565,Read,0.5940302610397339
+71ac5c98ebba2bb3,pause_stream,"Pause an active stream. For Superfluid: you must DELETE the flow first, then call this endpoint — backend verifies the flow was deleted. For micro-transfer: skips the current pending tick.",Destructive,Read,0.9904826879501343,Write,0.9858664274215698
+4187caa9b4a1e556,stop_stream,Stop a stream permanently and mark the job as completed. Can be called by agent or human on STREAMING or PAUSED jobs.,Destructive,Execute,0.9918115139007568,Read,0.9878058433532715
+4bf5a121bf9106e2,invarium_manage_scenario,"Manage a scenario: update its fields, delete it, or toggle its active state.
+
+IMPORTANT: Deletion is permanent and irreversible. When action=""delete"",
+you MUST first call this tool WITHOUT confirm=true. The tool will return
+a confirmation prompt listing the scenario to be deleted. Show this to
+the user and only re-call with confirm=true after they explicitly approve.
+NEVER set confirm=true on the first call. NEVER delete multiple scenarios
+in a loop without showing the user the full list and getting one explicit
+confirmation for the batch.
+
+Args:
+    scenario_id: ID of the scenario to manage.
+    action: Operation to perform — ""update"", ""delete"", or ""toggle"".
+    name: New name for the scenario (update only).
+    description: New description for the scenario (update only).
+    expected_behavior: New expected behavior text (update only).
+    tags: JSON array string of tags, e.g. '[""auth"", ""edge-case""]' (update only).
+    confirm: Required for delete — must be true to execute deletion.
+        First call without confirm to get a confirmation prompt.
+
+Returns:
+    A confirmation string on success, or an error message on failure.",Destructive,Write,0.9726391434669495,Destructive,0.9529486298561096
+bf6a94a16b63c2c7,inverspec_phase_1_architecture,Returns the Phase 1 prompt template for high-level architecture and request-flow mapping. Run after Phase 0 inventory is complete.,Execute,Read,0.9364445209503174,Execute,0.879341185092926
+2c0a2155dfd68f56,inverspec_phase_7_maintenance,Returns the Phase 7 prompt template for partial updates to an existing technical specification after code changes. Maps changed file patterns to the right spec phase and rewrites only affected sections. Requires a completed initial spec (Phases 0–6).,Execute,Read,0.9943599104881287,Write,0.9912279844284058
+63e7fa69053947a1,enter_position,Enter an open pool with a position on one side of a token pair. Requires an agent API key (from create_agent). Earlier entries earn a higher conviction multiplier.,Read,Write,0.9942511320114136,Read,0.990572452545166
+2375245432225632,aide_discover,"Scan for .aide spec files in this project. Returns a tree map of where specs live, following progressive disclosure.
+
+Without a path: returns a lightweight project-wide map — file locations and types only, no content. Use this once to understand the project's spec architecture.
+
+With a path: the response opens with the ancestor chain — the cascading intent lineage from project root down to the target directory, with each ancestor showing its description and alignment status (aligned/misaligned when set). The ancestor chain gives you the full inherited context before you read a single spec body. After the ancestor chain comes the detailed subtree of the target directory — summaries extracted from file content and anomaly warnings. Use this to drill into the area you're working on.
+
+.aide files are progressive disclosure specs that live next to orchestrator code — they contain intent (strategy, implementation contracts, anti-patterns), research (sources, data, patterns), or QA checklists (todo). Read .aide files BEFORE reading code — they are the context layer between folder structure and implementation details.
+
+File types (.aide, intent.aide, research.aide, plan.aide, todo.aide):
+- .aide — Intent spec (default). Strategy, contracts, anti-patterns.
+- intent.aide — Same as .aide, used only when research.aide exists in the same folder.
+- research.aide — Raw research. Sources, data points, pattern synthesis.
+- plan.aide -- Architect's implementation plan. Checkboxed steps for the implementor.
+- todo.aide — QA re-alignment document. Captures where implementation drifted from intent.
+
+Never have both .aide and intent.aide in the same folder.",Write,Read,0.9945396780967712,Execute,0.9926263093948364
+73f0a5e4bb45fca5,aide_init,"Bootstrap the AIDE development environment into a project. Returns structured JSON for agent consumption — not prose.
+
+The tool uses a two-call pattern for progressive disclosure:
+
+**First call (no `category` param):** Returns a lightweight summary — every step with `name`, `status` (would-create/would-overwrite/would-skip/exists), `category`, and `filePath`, but NO `content` fields. Also returns `brainHints` (brain root candidates) and detected `framework`. Use this to understand what needs to be done and which categories require user prompts.
+
+**Second call (with `category` param):** The tool writes all `would-create` AND approved `would-overwrite` files directly to disk itself and returns a manifest — steps with `filePath`, `status` (`created`, `overwritten`, or `exists`), and `name`, but NO `content`. `would-skip` steps stay `would-skip` in the manifest (tool writes nothing for them). The agent never sees file content and never uses the Write tool for new files.
+
+**Exception — MCP steps:** For MCP steps, the manifest includes `prescription` data (key name and entry object) so the agent can read the existing config, merge, and write. The tool never touches MCP config directly.
+
+**Exception — brain category:** When calling with `category=brain`, also pass `brainPath` with the user-confirmed brain root path. The tool creates the brain root scaffold directories directly.
+
+**Exception — IDE VS Code steps:** IDE steps that need external tooling (VS Code CLI) return instructions for the agent to execute, since those aren't simple file writes.
+
+**Agent branch logic — silent-on-create, prompt-on-overwrite:**
+
+After the first call, walk the categories using this rule:
+- **Pure-create category** (all steps are `would-create`, `would-skip`, or `exists`): apply silently by calling with `category=X` immediately — no AskUserQuestion. A category with nothing on disk to overwrite has no decision the user can inform.
+- **Overwrite-bearing category** (any step is `would-overwrite`): pause and use AskUserQuestion with structured options. Name the files that would be overwritten. If the user approves, call with `category=X` — the tool overwrites and returns `overwritten` in the manifest. If the user declines an overwrite but wants the new files, call with `category=X` — the tool writes only `would-create` steps; the `would-overwrite` step stays `would-overwrite` in the manifest.
+- **Inherent-decision categories** (framework, brain root path, MCP config merge, IDE choice): always use AskUserQuestion regardless of disk state. These are not file-write decisions — filesystem contents cannot resolve them.
+
+**IMPORTANT — one-at-a-time wizard pattern using AskUserQuestion:**
+Do NOT present a summary table of all categories. Do NOT offer ""all"" as an option. Do NOT ask conversational questions — use the `AskUserQuestion` tool with structured options at every pause point.
+
+1. Call without `category` first to get the metadata
+2. Present ONLY the detected framework — use AskUserQuestion with Yes/{alternatives} options. STOP.
+3. Walk categories in order: methodology, commands, agents, skills, mcp, brain, ide, readme. For each:
+   - Pure-create: apply silently (call with `category=X`), report results, move to next.
+   - Overwrite-bearing: use AskUserQuestion naming the would-overwrite files. STOP. Wait for selection, then call with `category=X`. Report manifest (created N, overwrote M). Move to next.
+   - Inherent decision: always use AskUserQuestion. STOP.
+4. For brain: use AskUserQuestion with brainHints as labeled options (user can pick Other for custom path). STOP. Then call with `category=brain` and `brainPath`.
+5. For MCP: use AskUserQuestion with Merge/Skip options. Merge the `prescription` entry into the existing config yourself (read → merge → write). STOP.
+6. For IDE: use AskUserQuestion with multiSelect for Zed/VS Code/Neither. STOP.
+
+Each pause point is ONE AskUserQuestion → wait for selection → then proceed. Never show multiple categories at once. Never ask open-ended conversational questions.",Execute,Read,0.7418944239616394,Execute,0.6257607340812683
+956d3722a1d12136,aide_upgrade,"Compare the AIDE methodology artifacts in this project against the canonical versions and return structured JSON results grouped by category. Use this when the user asks to update AIDE, sync AIDE, refresh AIDE, check for AIDE updates, or bring AIDE up to date. This is NOT for editing user .aide specs — it inspects methodology infrastructure only.
+
+The tool uses a two-call pattern for progressive disclosure:
+
+**First call (no `category` param):** Returns a lightweight summary — every category with file names, statuses, and counts, but NO file content. Use this to understand what has drifted and present a summary to the user. Ask which categories they want to apply.
+
+**Second call (with `category` param):** The tool writes all differs/missing files directly to disk itself and returns a manifest — file results with `filePath`, `status` (`""updated""`, `""created""`, or `""unchanged""`), and `name`, but NO `canonicalContent`. The agent never sees file content and never uses the Write tool for methodology files.
+
+Repeat the second call for each category the user confirms.
+
+As the calling agent, you must:
+1. Call without `category` first to get the summary
+2. Present each drifted category (differs/missing) and ask the user which to apply
+3. For each confirmed category, call again with `category=X` — the tool writes the files and returns a manifest. Report what was updated/created to the user.
+4. For the `mcp` category, the manifest still includes `prescription` data — merge the entry into the existing MCP config yourself (read → merge → write). If `malformed`, tell the user — do not overwrite.
+5. For `ide`, the manifest may include `instructions` for VS Code extension install — execute that command for the user. Zed config is written directly by the tool.
+6. For `brain`, `category=brain` never writes; the manifest entry carries an `instructions` field directing the agent to invoke `/aide:brain config`, which is the single canonical home for brain.aide creation.
+
+**IMPORTANT — one-at-a-time wizard pattern using AskUserQuestion:**
+Do NOT present all categories at once. Walk the user through ONE category at a time using AskUserQuestion with Yes/Skip options. Stop after each question and wait for confirmation before calling with that category.
+
+Categories: pointer-stub, methodology-docs, version-metadata, commands, agents, skills, mcp, ide, readme, brain.
+
+Upgrade surface (user code and user .aide specs are never touched):
+- AIDE pointer stub in the agent config file
+- Canonical methodology docs under .aide/docs/
+- versions.json metadata under .aide/docs/
+- Slash commands for all pipeline phases
+- Pipeline agent files, skill templates
+- MCP server entry in the project's MCP config
+- IDE file association config (Zed settings, VS Code extension)
+
+Supports Claude Code, Cursor, Windsurf, and Copilot. Auto-detects the framework or accepts an override.",Execute,Write,0.6483097076416016,Execute,0.4599907398223877
+00a7b267d56d6a58,compare_periods,"Compare costs between two date ranges, showing per-service absolute and percentage changes.",Read,Execute,0.7911843657493591,Read,0.6386520862579346
+c761323b80bbd0ad,prepend_to_note,Prepend content to the beginning of an existing note.,Read,Write,0.9428208470344543,Read,0.8900592923164368
+f04432d281241a0d,upvote,Upvote a forum thread (requires agent token),Read,Write,0.901540219783783,Read,0.8094271421432495
+39beb9698019b85d,output,"Set output format: text, json, or full",Read,Write,0.9498816132545471,Read,0.9095203876495361
+0f1ae6ff788527d7,kit_remove_tag_from_subscriber,Remove a tag from a subscriber,Write,Destructive,0.9461537003517151,Write,0.900103747844696
+9162d7658e44ee30,argument_validation,Analyse arguments for logical fallacies,Execute,Read,0.997664213180542,Other,0.9968741536140442
+ba6f4d0297aa4da4,code_review_deep,"Review code for security, performance, and quality",Execute,Read,0.998316764831543,Write,0.9977260231971741
+487646223b1e62a9,create_function_schema,Generate JSON Schema for function calling,Execute,Write,0.9969160556793213,Read,0.9954415559768677
+2de239200d1232c6,creative_ideation,Generate creative ideas with feasibility analysis,Execute,Read,0.9419602155685425,Write,0.9171332120895386
+27cb77f62fccfbb6,debug_with_reasoning,Debug code with step-by-step DeepSeek analysis,Execute,Read,0.9895528554916382,Execute,0.9859771132469177
+3db98e8b4d01b1a1,explain_like_im_five,Explain complex topics in simple terms via DeepSeek,Execute,Read,0.9872127175331116,Other,0.9823847413063049
+8bb37800946ae606,function_call_debug,Debug function calling issues via DeepSeek,Execute,Read,0.9869272112846375,Write,0.9809048175811768
+629c590131759447,mathematical_proof,Prove mathematical statements via DeepSeek,Execute,Read,0.9963414072990417,Execute,0.9950198531150818
+d5009973ec54c9a9,pair_programming,Interactive coding assistance via DeepSeek,Execute,Read,0.9474926590919495,Other,0.9286543726921082
+8d835410f0ee32a6,research_synthesis,Research topics and create structured reports,Execute,Write,0.9946905970573425,Read,0.9930593371391296
+599e85fbe52a123b,strategic_planning,Create strategic plans with reasoning analysis,Execute,Write,0.9940164089202881,Read,0.9912188649177551
+219dba56672478ce,ai_interaction_log,Log user corrections and learning data,Write,Read,0.9988172650337219,Write,0.998253345489502
+8e472c42a4421af6,Auto-resolution,Auto-resolve high-confidence merge conflicts,Execute,Write,0.9903087019920349,Read,0.9872142672538757
+73c27a933c9df517,directive_executions,Record directive execution statistics,Write,Read,0.9988429546356201,Write,0.9984497427940369
+6ee28a5dfd1ac26d,directive_helpers,Map directives to helper functions,Write,Read,0.997414231300354,Write,0.9964008331298828
+c3e82921422093bc,directive_implementations,Link directives to generated code files,Write,Read,0.9922963976860046,Write,0.9874640107154846
+d75e2eec3438b0a6,directive_preferences,Override per-directive behaviour settings,Write,Read,0.7645125389099121,Write,0.5526245832443237
+0250e293a1c1e6c1,fp_flow_tracking,Track FP compliance history,Write,Read,0.9980497360229492,Write,0.9973533153533936
+3b476c4bad72cdf1,source_files,Track user directive source files,Write,Read,0.9919758439064026,Write,0.9891595244407654
+73d18fe0aba66910,tracking_settings,Toggle opt-in tracking feature flags,Write,Read,0.9739858508110046,Execute,0.964133083820343
+9df0f6043d385f95,repurpose_content,"Repurpose content into platform-specific formats. Takes a blog post, transcript, or article and generates optimized versions for Twitter/X, LinkedIn, Substack, email, and video. Requires a CONTENT_REPURPOSER_API_KEY.",Other,Read,0.817340075969696,Write,0.6611841917037964
+5e8bdefeb056d2b5,gossip_bug_feedback,File a GitHub issue on the gossipcat repo from an in-session bug report. Dedupes against open issues. Requires authenticated gh CLI.,Write,Read,0.999081015586853,Write,0.9986280202865601
+b910f209734703f4,gossip_collect,Collect results from dispatched tasks. Waits for completion by default. Use consensus: true for cross-review round.,Write,Read,0.9988458156585693,Write,0.998479425907135
+fcd2bf5f400a6c11,gossip_config,"Manage runtime feature-gate flags stored in .gossip/runtime-flags.json. Actions: list (show all flags + source), get (one flag), set (write flag), unset (remove flag), reload (discard cache after hand-edit).",Destructive,Write,0.894241452217102,Destructive,0.7971788644790649
+0690951c86b3a2eb,gossip_dispatch,"Dispatch tasks to agents. mode:""single"" (default) sends to one agent. mode:""parallel"" fans out to multiple agents. mode:""consensus"" dispatches with cross-review instructions. Returns task IDs for collecting results.",Write,Read,0.9968826770782471,Other,0.995854914188385
+ce0e1022eb93dd5b,gossip_relay,Feed a native agent result back into the gossipcat relay. Call this after a Claude Code Agent() completes a task dispatched via gossip_dispatch or gossip_run. Enables consensus cross-review and gossip for native agents.,Write,Execute,0.9931846261024475,Read,0.9899475574493408
+063d7ee4c52469c6,gossip_relay_cross_review,Feed native agent cross-review result back into a pending consensus round. Called after dispatching Agent() for cross-review.,Write,Read,0.9983593821525574,Write,0.9974688291549683
+442abd440f005e39,gossip_reload,"Terminate the MCP server process so Claude Code respawns it with a fresh bundle. Use after 'npm run build:mcp' to hot-reload without quitting Claude Code. Returns a notice, then exits 100ms later.",Execute,Read,0.9122014045715332,Execute,0.8379890322685242
+c6d4f6847b2601a1,gossip_remember,"Search an agent's archived knowledge files, or manage the memory sidecar index.",Write,Read,0.617733359336853,Write,0.35848382115364075
+407637bd43ead135,gossip_signals,"Record or retract consensus performance signals. Use action ""record"" (default) to record signals after cross-referencing agent findings — call IMMEDIATELY when you verify. Use action ""retract"" to undo a previously recorded signal.",Write,Read,0.9723332524299622,Write,0.9598451256752014
+6bdc3c3c7dc470f7,wopee_dispatch_analysis,"Create a new analysis suite AND dispatch an AI crawling agent in one step. The agent opens a real browser, navigates from the starting URL, discovers pages, and maps the application structure. Use this when you want to auto-analyze a web app — it combines suite creation and crawling. Use wopee_create_blank_suite instead if you want to manually populate the suite. Optionally accepts starting URL, login credentials, cookie preferences (ACCEPT_ALL, DECLINE_ALL, IGNORE), custom variables, and free-text instructions to guide the crawl. Not idempotent: each call creates a new suite and starts a new crawl. Side effects: creates a suite and execution records on the platform. Rate limit: 10 seconds between dispatches per project; concurrent calls auto-retry with exponential backoff. Returns the created suite object on success.",Write,Execute,0.672487199306488,Write,0.4909135103225708
+422bebecff423c8d,create-transfer,Create a transfer for a customer,Financial,Write,0.9958486557006836,Financial,0.9943474531173706
+50ecd66ebf150251,payouts,Execute Cashfree payout operations,Financial,Execute,0.9877430200576782,Read,0.9837523102760315
+03324bd5cec56749,esbuild,"Runs the esbuild bundler and returns structured errors, warnings, and output files.",Execute,Read,0.8631298542022705,Execute,0.7402307391166687
+d7c63574eb30a606,nx,Runs Nx workspace commands and returns structured per-project task results with cache status.,Execute,Read,0.5513115525245667,Execute,0.1196865439414978
+a8a588bc5ee64877,rollup,Runs Rollup bundler and returns structured bundle output with errors and warnings.,Execute,Read,0.9499243497848511,Execute,0.9149668216705322
+6c42ea245ee6dd2f,tsc,"Runs the TypeScript compiler and returns structured diagnostics (file, line, column, code, message). Note: In compact mode, diagnostics are trimmed to file, line, and code — column and message fields are omitted to save tokens.",Write,Read,0.627997100353241,Execute,0.3957655727863312
+8f59c278702588e8,branch,"Lists, creates, renames, or deletes branches. Returns structured branch data.",Read,Destructive,0.9579739570617676,Read,0.9363645315170288
+b468dcc6a8f115aa,diff,Returns file-level diff statistics as structured data. Use full=true for patch content.,Write,Read,0.9181032776832581,Write,0.8413888812065125
+6549faa40ebf86e7,log,Returns commit history as structured data.,Write,Read,0.9983260035514832,Write,0.9972655773162842
+268d3f8408ef26eb,log-graph,Returns visual branch topology as structured data. Wraps `git log --graph --oneline --decorate`.,Write,Read,0.9588137865066528,Write,0.9224796891212463
+fbeaca3535c958fe,pull,"Pulls changes from a remote repository. Returns structured data with success status, summary, change statistics, conflicts, up-to-date and fast-forward indicators.",Write,Destructive,0.4850870370864868,Read,0.16592642664909363
+a28d690aad7b0cda,rebase,"Rebases the current branch onto a target branch. Supports abort, continue, skip, and quit for conflict resolution. Returns structured data with success status, branch info, conflicts, and rebased commit count.",Write,Read,0.49197685718536377,Execute,0.024921685457229614
+b3199bd0561db8d5,reflog,"Returns reference log entries as structured data, useful for recovery operations. Also supports checking if a reflog exists.",Write,Read,0.9966404438018799,Write,0.9952995181083679
+876d4002bd5dad89,head,"Makes an HTTP HEAD request via curl and returns structured response headers (no body). Use to check resource existence, content type, or cache headers. SECURITY: URLs targeting private/reserved IPs are blocked (SSRF protection). The proxy parameter routes traffic through an external proxy — use only with trusted proxies.",Write,Read,0.9890366196632385,Write,0.9840564131736755
+f5aac56bab2493c1,request,"Makes an HTTP request via curl and returns structured response data (status, headers, body, timing). SECURITY: URLs targeting private/reserved IPs are blocked (SSRF protection). The proxy parameter routes traffic through an external proxy — use only with trusted proxies. File uploads via form @filepath are blocked by default (set PARE_HTTP_ALLOW_FILE_UPLOAD=true to allow).",Write,Read,0.8344933986663818,Write,0.67436283826828
+344a26b94a6b5138,http-options,Make an HTTP OPTIONS request to a specified URL to check available methods and headers. Supports secret substitution using {secrets.key} syntax in URL and headers where 'key' corresponds to HAL_SECRET_KEY environment variables.,Write,Read,0.9980142116546631,Write,0.9969165325164795
+c96e5640317c47e6,zos_connect_list_apis,List all deployed API requester configurations (outbound calls from z/OS to external services),Write,Read,0.9818045496940613,Write,0.9651861190795898
+028120a7b5f84532,airdrop_sol,Request SOL airdrop (devnet/testnet only),Write,Read,0.976499617099762,Write,0.9567288756370544
+15359c13e451af09,burn_tokens,Burn tokens from a wallet,Destructive,Read,0.9335790276527405,Execute,0.9155451655387878
+fdf1314e4b8d82ab,close_token_account,Close a token account and reclaim rent,Destructive,Write,0.9797434210777283,Execute,0.9700005650520325
+eeb4b29996d873b8,freeze_account,Freeze a token account,Write,Read,0.5841451287269592,Execute,0.382127583026886
+b42cf00ebced4d1a,mint_tokens,Mint tokens to a wallet address,Write,Read,0.988457977771759,Write,0.9832249283790588
+67207a8ea89ba3ff,thaw_account,Thaw (unfreeze) a token account,Write,Read,0.7506126165390015,Write,0.5292539596557617
+e53ade88e08df696,browser_console_messages,Returns all console messages,Write,Read,0.9982724189758301,Write,0.9973376393318176
+6605430091f1f9f8,browser_evaluate,Evaluate JavaScript expression on page or element,Write,Read,0.9377659559249878,Write,0.8958162665367126
+b5b5b6af378f432f,browser_network_requests,Returns all network requests since loading the page,Write,Read,0.9993767142295837,Write,0.999130368232727
+e97895b8e6f5d4b4,scene_diagnose,"Diagnose lights and scenes. Tests connectivity, response times, identifies problems with scenes (null values, missing lights, etc.), and provides recommendations. If test_connectivity=true, REQUIRES user_confirmed=true because it toggles lights.",Write,Read,0.9963537454605103,Write,0.9938145875930786
+df66ae7ef002ca44,discover_api_endpoints,"List available endpoints at an API origin. Returns endpoint URLs with descriptions of what each does and the auth mode for each (paid or SIWX). Works with any origin, not just the registered ones.
+
+Call this when you need to see what routes are available at an origin — whether it's one of the registered origins or any other origin you've identified as useful. Treat the auth mode as guidance for what the route may require; fetch handles both SIWX and payment.
+
+The response always indicates whether guidance is available. Guidance is documentation published by the API provider explaining how endpoints work together, edge cases, and usage tips. compact guidance is included automatically; set include_guidance=true to force-include full usage documentation when you need to compose two or more endpoints or need clarification on how the origin works.",Write,Read,0.9969407916069031,Write,0.9955115914344788
+c56cac9ccdf4293c,asset_nine_slice,Emit a 9-slice config + CSS border-image snippet + Unity/Godot/Phaser/PixiJS-ready numbers from one image and 4 pixel offsets. Optionally also emit an Android .9.png with the 1px stretchable-region encoding. MCP equivalent of `p2a nine-slice <image>`.,Write,Read,0.7750747799873352,Write,0.5755652189254761
+c8a3037332d3afaf,asset_sprite_sheet,"Pack a directory of PNG/WEBP/JPG frames into one sprite sheet + TexturePacker-compatible JSON atlas (works in Phaser, PixiJS, Three.js, Godot, Unity via a light importer). MCP equivalent of `p2a sprite-sheet <dir>`. Offline, no API key.",Write,Read,0.6690409779548645,Write,0.3523879647254944
+d8f72d1fb7d892b7,asset_train_brand_lora,"Train a brand-consistent LoRA from 20-50 sample images, returning a `lora_id` the `comfyui-*` and SDXL-family providers can reference. Requires a user-owned training endpoint (Modal / Runpod / self-host) at PROMPT_TO_BUNDLE_MODAL_LORA_TRAIN_URL. Phase-4 scaffold: the MCP tool does the packaging, validation, and HTTP; the user owns the deployment and pricing. See docs/research/06-stable-diffusion-flux/6d-lora-training-for-brand-style.md.",Write,Execute,0.9915380477905273,Read,0.9882109761238098
+66e0f54025203d5a,asset_upscale_refine,"Upscale / refine an image, asset-type-aware. DAT2 for flat logos/icons, Real-ESRGAN/SUPIR for photoreal, img2img for diffusion polish. Lanczos fallback.",Write,Read,0.9366186857223511,Write,0.8791584968566895
+875aa06b8c9e6fac,asset_vectorize,"Convert a raster image to SVG. Tries in order: Recraft /vectorize (if PROMPT_TO_BUNDLE_RECRAFT_VECTORIZE_URL is set), vtracer on PATH, potrace on PATH, then a built-in posterize run-length fallback. Passes all output through SVGO when installed.",Execute,Write,0.9973100423812866,Read,0.9960878491401672
+a90ca0c80d1f1634,muse_collect_code_context,"Collects code blocks and conversation summaries into a structured context for documentation. Supports automatic language detection, duplicate removal, and statistics.",Write,Read,0.997275173664093,Write,0.9962465763092041
+cf3e066ca99ea8a9,muse_summarize_design_decisions,"Extracts and analyzes key architectural and design decisions from conversation logs. Supports both English and Korean, with importance scoring and keyword extraction. Set useAI=true for Claude-powered enhanced analysis.",Write,Read,0.653010368347168,Write,0.33933523297309875
+1d1e7848489ff70a,create_deposit,"Create a bank deposit. Accepts account/department/vendor names (will lookup IDs automatically). Lines represent the sources of the deposit — amounts can be positive (income) or negative (fees, deductions). QuickBooks computes the total from line amounts. Returns deposit details and a link to view in QuickBooks.",Financial,Write,0.9906499981880188,Financial,0.9847296476364136
+3eb507d8d8842c74,edit_deposit,"Modify an existing deposit. Can update date, memo, deposit account, department, and/or lines. CRITICAL for line changes: The QB Deposit API does NOT replace lines - it merges them. Lines WITH line_id update existing lines. Lines WITHOUT line_id are ADDED as new. Lines NOT included are KEPT unchanged. To 'delete' a line, you must include ALL existing lines with their line_ids and set unwanted lines to amount: 0. Line amounts must sum to the original deposit total (use expected_total to override for corrupted deposits).",Financial,Write,0.9982315897941589,Destructive,0.9977594017982483
+38ee419729f3298a,Self-contained,"Includes bundled FFmpeg binary, no system install needed",Read,Write,0.7381881475448608,Execute,0.5765456557273865
+2c6d2e9eb06ad62e,enqueue_image_files,"複数のローカルファイルをアップロードセットに一括でアップロードします。ファイルパスのリストを指定してください。対応形式: PDF, JPEG, PNG",Read,Write,0.9978538155555725,Read,0.9969027638435364
+e193ddecdaf27146,thrd.send,Initiate a new outbound email. Requires idempotency. Tier 3 cold outbound may return por_required. High-risk inbound context may require security_ack_token.,Read,Write,0.9740906953811646,Read,0.9522496461868286
+352293feb9f9f2af,ibge_noticias,"Searches IBGE news and press releases.
+
+Features:
+- Latest news and releases
+- Search by specific term
+- Filter by period (start and end date)
+- Filter by type (release or news)
+- Filter featured news
+- Pagination support
+
+Examples:
+- Latest 10 news: (no parameters)
+- Search census: busca=""censo""
+- 2024 news: de=""01-01-2024"", ate=""12-31-2024""
+- Releases only: tipo=""release""",Execute,Read,0.9984418749809265,Execute,0.9975420236587524
+5bdc6875ab5685ed,vibe_inbox,See your unread messages and recent threads.,Write,Read,0.9952894449234009,Write,0.9925445318222046
+b77d246ebf5ca05b,vibe_who,See who's online and what they're building.,Write,Read,0.9675028920173645,Write,0.9439046382904053
+1dd5303562d195d6,openai_compatible_chat,"Chat completions with **any** OpenAI-compatible API (Azure OpenAI, Ollama, vLLM, etc.).",Read,Write,0.9524440169334412,Read,0.915770947933197
+9688cb4bb77dc6d2,openrouter_chat,"Unified API access to 100+ models from multiple providers (OpenAI, Anthropic, Google, Meta, etc.).",Read,Write,0.7946521639823914,Read,0.6178785562515259
+c9b9e34e95fbcd81,openwebui_chat,OpenAI-compatible interface for self-hosted LLMs.,Read,Write,0.4620753228664398,Execute,0.12445151805877686
+20489112c8a43229,calculate_battery_config,"Determine how to arrange batteries in series and/or parallel to achieve a target voltage and capacity. Returns the number of batteries needed, the wiring configuration (e.g. 2S3P), and step-by-step wiring instructions.",Read,Write,0.6857029795646667,Read,0.384980171918869
+106abf36f1d460a0,calculate_power_budget,"Calculate total daily energy consumption from a list of electrical loads. Each load specifies its power draw, how many hours per day it runs, and quantity. Returns total daily energy (Wh and Ah), peak power draw, and average power. This is typically the first step in sizing a battery bank and solar system.",Read,Write,0.690487802028656,Read,0.39522621035575867
+6551a7d0fe2e9e43,calculate_wire_gauge,"Calculate the recommended wire gauge / cable cross-section for a DC circuit. Considers both ampacity (current carrying capacity) and voltage drop to recommend the optimal cable size. Also returns total resistance, power loss, and a fuse recommendation. Supports copper conductors from 0.75 mm² (18 AWG) to 240 mm² (300 MCM).",Destructive,Read,0.8434816598892212,Write,0.6961714029312134
+213624a4319ada58,create_pipeline_trigger,Create a pipeline trigger token for cross-project pipeline triggering via the GitLab API,Write,Execute,0.9915763735771179,Write,0.9883928298950195
+80582689b9004eb3,upgrade_to_bot,Upgrade to Bot account. WARNING: This is irreversible and the account must not have played any games.,Destructive,Write,0.631145715713501,Execute,0.4275050759315491
+1cd3ae7ac1c1c031,AoT,"Atom of Thoughts (AoT) is a tool for solving complex problems by decomposing them into independent, reusable atomic units of thought.
+Unlike traditional sequential thinking, this tool enables more powerful problem solving by allowing atomic units of thought to form dependencies with each other.
+
+When to use:
+- Solving problems requiring complex reasoning
+- Generating hypotheses that need verification from multiple perspectives
+- Deriving high-confidence conclusions in scenarios where accuracy is crucial
+- Minimizing logical errors in critical tasks
+- Decision-making requiring multiple verification steps
+
+Atom types:
+- premise: Basic assumptions or given information for problem solving
+- reasoning: Logical reasoning process based on other atoms
+- hypothesis: Proposed solutions or intermediate conclusions
+- verification: Process to evaluate the validity of other atoms (especially hypotheses)
+- conclusion: Verified hypotheses or final problem solutions
+
+Parameter descriptions:
+- atomId: Unique identifier for the atom (e.g., 'A1', 'H2')
+- content: Actual content of the atom
+- atomType: Type of atom (one of: premise, reasoning, hypothesis, verification, conclusion)
+- dependencies: List of IDs of other atoms this atom depends on
+- confidence: Confidence level of this atom (value between 0-1)
+- isVerified: Whether this atom has been verified
+- depth: Depth level of this atom (in the decomposition-contraction process)
+
+Additional features:
+1. Decomposition-Contraction mechanism: 
+   - Decompose atoms into smaller sub-atoms and contract back after verification
+   - startDecomposition(atomId): Start atom decomposition
+   - addToDecomposition(decompositionId, atomId): Add sub-atom to decomposition
+   - completeDecomposition(decompositionId): Complete decomposition process
+
+2. Automatic termination mechanism:
+   - Automatically terminate when reaching maximum depth or finding high-confidence conclusion
+   - getTerminationStatus(): Return termination status and reason
+   - getBestConclusion(): Return highest confidence conclusion
+
+Usage method:
+1. Understand the problem and define necessary premise atoms
+2. Create reasoning atoms based on premises
+3. Create hypothesis atoms based on reasoning
+4. Create verification atoms to verify hypotheses
+5. Derive conclusion atoms based on verified hypotheses
+6. Use atom decomposition to explore deeper when necessary
+7. Present the high-confidence conclusion atom as the final answer",Execute,Other,0.31755557656288147,Read,0.1244601309299469
+6e16d2d4d31716f8,AoT-light,"A lightweight version of Atom of Thoughts (AoT) designed for faster processing and quicker results.
+This streamlined version sacrifices some depth of analysis for speed, making it ideal for time-sensitive reasoning tasks.
+
+When to use:
+- Quick brainstorming sessions requiring atomic thought organization
+- Time-sensitive problem solving where speed is prioritized over exhaustive analysis
+- Simpler reasoning tasks that don't require deep decomposition
+- Initial exploration before using the full AoT for deeper analysis
+- Learning or demonstration purposes where response time is important
+
+Key differences from full AoT:
+- Lower maximum depth (3 instead of 5) for faster processing
+- Simplified verification process
+- Immediate conclusion suggestion for high-confidence hypotheses
+- Reduced computational overhead and response payload
+- Optimized for speed rather than exhaustive analysis
+
+Atom types and parameters are the same as the full AoT tool.",Execute,Read,0.433108925819397,Execute,0.20405283570289612
+2218f4f8408aa604,scheduleDeployment,"🕐 Schedule a deployment to run at specific times or intervals.
+			
+			Set up automated execution of deployments using flexible scheduling options including:
+			- One-time execution at a specific date/time
+			- Recurring schedules using cron expressions
+			- Simple interval-based schedules (daily, weekly, monthly)
+			
+			**Perfect for:**
+			- Automated data processing workflows
+			- Regular report generation
+			- Periodic API data syncing
+			- Scheduled backup operations
+			- Time-based business process automation
+			
+			**Schedule Types:**
+			- 'once': Execute once at a specific datetime
+			- 'cron': Use cron expression for complex schedules
+			- 'interval': Simple recurring intervals (daily, weekly, monthly)
+			
+			**Examples:**
+			- Daily at 9 AM: schedule_type='interval', interval='daily', time='09:00'
+			- Every Monday at 2 PM: schedule_type='cron', cron_expression='0 14 * * 1'
+			- Once on Dec 25, 2024 at 10:30 AM: schedule_type='once', datetime='2024-12-25T10:30:00Z'",Write,Execute,0.8249083161354065,Write,0.6745598912239075
+477a2fb7efe1da71,submitDeploymentRun,"Execute a deployed DataGen workflow with custom inputs.
+      
+      Use this to run pre-built workflows (like data processing pipelines, web scrapers, or automation scripts) that have been deployed as API endpoints. This starts an asynchronous execution - you'll get a run ID that you can monitor with 'checkRunStatus'.
+      
+      **Typical workflow:** 
+	  1. Use `validateDeploymentConnection` tool to validate the deployment and get the missing MCP or Secrets.
+      2. Use this tool to start a deployment
+      3. Get a run_uuid in response
+      4. Use `checkRunStatus` to monitor progress
+      5. Retrieve results when complete
+      
+      **Use cases:** Run data pipelines, execute scrapers, trigger automations, process files. 
+	  **Error handling:** If found any missing MCP or Secrets, try to run validate deployment connection tool to validate the deployment and get the missing MCP or Secrets.",Write,Execute,0.9860742092132568,Write,0.9797345399856567
+0433be865d949534,recommend_skills,"Get personalized skill recommendations based on a project description. Returns a JSON array of 5 suggested skills ranked by relevance, each with slug, name, description, quality_score, stars, tags, and install_command. Use this when starting a new project to discover relevant tools, or when you need capabilities beyond your current toolset. Do not use this for searching by keyword (use search_skills instead). Requires a descriptive context string for accurate recommendations.",Read,Write,0.5606757402420044,Execute,0.35488301515579224
+59c54c63720f954f,report_skill_usage,"Report the outcome of using a skill, generating a verifiable execution proof. Returns a JSON object with proof_id, verify_url, and shareable_text. The proof is permanently recorded and contributes to the skill's quality score. Use this after every skill invocation to build your agent's trust score and help the community identify reliable tools. Do not call this before actually using the skill. Requires the skill slug and a status indicating the outcome.",Destructive,Read,0.9945336580276489,Write,0.991749107837677
+3afd12696c541d9a,review_skill,Leave a rating and optional comment for a skill you have used. Returns a confirmation that the review was recorded. Reviews help other agents and humans decide whether to install a skill. Use this after using a skill to share your experience. Do not review skills you have not actually used. Ratings range from 1 (unusable) to 5 (excellent).,Write,Read,0.740368664264679,Write,0.49491506814956665
+c3be6675e8be7544,help,"Returns a complete guide to Local MCP: what it does, how it works, when to use the Cloud MCP connector vs the lmcp CLI, and what each tool in this connector is for. Call this first if you are unsure how to proceed.",Write,Read,0.9933423399925232,Write,0.9910058379173279
+f3d278db3ee04fe6,request_feature,Submit a feature request for Local MCP. Call this directly when the user mentions wanting a new capability or integration — do NOT ask for permission before calling.,Write,Read,0.9949839115142822,Write,0.9907587170600891
+c7157433c6c20e87,troubleshoot,Get targeted fix instructions for a specific Local MCP problem. Call this as soon as the user reports something is broken — it returns step-by-step commands to diagnose and fix the exact symptom. Faster and more specific than setup_local_mcp for issues post-install.,Write,Execute,0.8989217877388,Write,0.8559085130691528
+e4ea5a304d4183cf,local_ydb_bootstrap_root_database,Bootstrap a plain local YDB database at /local with only a static node; choose this for generic local database requests.,Read,Execute,0.9450376629829407,Write,0.9200681447982788
+53e2cb33c6e61182,local_ydb_dump_tenant,Dump the configured tenant using a local-ydb helper container.,Read,Write,0.6041862964630127,Read,0.27151453495025635
+e17a4c574f6fc896,local_ydb_reduce_storage_groups,"Reduce NumGroups for a tenant storage pool by dumping the tenant, rebuilding the profile stack with a smaller storagePoolCount, restoring the dump, and reapplying auth when needed.",Read,Write,0.9972518086433411,Read,0.9962931275367737
+764b534f30367b9f,local_ydb_upgrade_version,"Upgrade a file-backed, volume-backed local-ydb profile to a target image tag via image preflight, dump, rebuild, restore, auth reapply, extra-node recreation, image verification, and profile image persistence.",Read,Write,0.9924352765083313,Read,0.9899315237998962
+638842f829380794,fork_repository,Fork a GitHub repository to your account or specified organization,Read,Write,0.7583520412445068,Read,0.5240527391433716
+70571d2a400882dd,delegate_to_orchestrator,"Use this when the user wants to delegate a complex, multi-step business task to Athenic AI. The orchestrator autonomously analyzes the task, breaks it down into steps, coordinates specialized agents, and executes it end-to-end. Perfect for research, content creation, data analysis, automation workflows, and multi-platform campaigns. Tracks progress in real-time with live updates.",Read,Write,0.9227184653282166,Financial,0.8874707818031311
+7f5d61b8eba8cf3b,da_liu_ren_calculate,"大六壬（Da Liu Ren）是中国古代三式之一，以人事预测见长，擅长判断日常生活中的人事问题。
+
+## 核心概念
+- **四课**：由日干、日支加上天地盘推演出的四个课位，反映事物的基本结构
+- **三传**：初传（发用）、中传、末传，反映事态发展的过程（起始→发展→结局）
+- **十二天将**：贵人、腾蛇、朱雀、六合、勾陈、青龙、天空、白虎、太常、玄武、太阴、天后
+- **月将**：太阳所在的黄道位置，加于时支之上布天盘
+- **课体**：根据四课的推导方式命名（如元首课、重审课、涉害课、遥克课等）
+- **六亲**：父母、兄弟、子孙、妻财、官鬼——反映事物之间的生克关系
+- **神煞**：驿马、桃花、华盖、天德、月德、旬空等辅助判断
+
+## 解读要点
+1. **看课体**：课体决定了取传方法，不同课体暗示事物的性质
+   - 元首课：事情自上而下，领导之象
+   - 重审课：需要反复斟酌
+   - 涉害课：牵涉面广，事多阻碍
+   - 遥克课：远方来事，需等待
+2. **看三传**：
+   - 初传（发用）：事情的起因和开端
+   - 中传：事情的发展过程
+   - 末传：事情的最终结局
+   - 三传递生为吉，递克为凶
+3. **看天将**：
+   - 青龙主吉庆、贵人主贵助
+   - 白虎主凶险、玄武主暗昧
+4. **看日干旺衰**：日干代表求测人，旺则有力，衰则无力
+5. **看空亡**：旬空之支所临之神/将力量减弱
+
+## 常见用途
+- 求财：看妻财爻、青龙、生门
+- 求官：看官鬼爻、朱雀、贵人
+- 婚姻：看天后、六合、妻财爻
+- 疾病：看天医、白虎、病符
+- 出行：看驿马、太冲、天马",Other,Write,0.8211190700531006,Execute,0.6812877058982849
+e4d9944505a5cd6b,qimen_dunjia_calculate,"奇门遁甲（Qimen Dunjia）是中国古代三式之一，被称为""帝王之学""。通过天时、地利、人和三维度分析时空能量场。
+
+## 核心概念
+- **九宫**：坎(1)、坤(2)、震(3)、巽(4)、中(5)、乾(6)、兑(7)、艮(8)、离(9)，对应八方和五行
+- **天盘/地盘**：天干在九宫中的分布，天盘为动态，地盘为静态
+- **九星**：天蓬、天芮、天冲、天辅、天禽、天心、天柱、天任、天英
+- **八门**：休门、生门、伤门、杜门、景门、死门、惊门、开门
+- **八神**：值符、腾蛇、太阴、六合、白虎、玄武、九地、九天
+- **值符/值使**：当前时刻的主星和主门，是判断吉凶的核心
+
+## 解读要点
+1. **看值符值使**：值符星和值使门的状态决定总体吉凶
+2. **看用神宫位**：根据用途找到对应宫位（如求财看生门所在宫）
+3. **看三奇六仪**：乙丙丁为三奇（吉），戊己庚辛壬癸为六仪
+4. **看格局**：天盘与地盘天干组合形成吉格（如龙遁、虎遁）或凶格（如击刑、入墓）
+5. **看空亡**：落入空亡的宫位力量减弱
+
+## 常见用途
+- 求财：重点看生门、戊
+- 事业：重点看开门、值使
+- 感情：重点看六合、天后
+- 出行：重点看三奇得使、门迫否",Other,Write,0.7693061232566833,Execute,0.6006808280944824
+623a340ed6551ced,telora_discover,"Load additional Telora tool domains on demand. At startup only core tools (product, focus, delivery, issue) are available. Use this to load domains for: agent, role, escalation, AI, blocked, help, wiki, page, knowledge, search, split, merge, archive, audit, context, workflow, state machine, transition, guard, policy, lifecycle, stage, report, stakeholder, weekly, digest, summary, progress, template, cadence, playbook, pattern, instantiate, repeatable, deployment, profile, CI/CD, environment, infrastructure, deploy, risk, register, mitigation, dependency, communication, impact, likelihood, cascade, loop, document, question, answer, persona, intent, differential, signal, reality, metrics, projection, variance, evaluate, brief, tree, CRT, FRT, node, edge, injection, root cause, Goldratt, focus-scoped, overlay, contract, agreement, counterparty, version, diff, markdown.
+
+Available domains:
+  agent: AI agent roles and human-AI escalation management (1 tool, 5 actions)
+  wiki: AI-managed product wiki: ranked search, page CRUD, split, merge, archive, and audit (8 tools)
+  workflows: Workflow state machines with transition guards and policy automation (1 tool, 5 actions)
+  reports: Stakeholder reports and templates: AI-generated digests, risk assessments, custom report types (2 tools, 8 actions)
+  playbooks: Playbook templates for repeatable execution patterns (1 tool, 4 actions)
+  profiles: Deployment profiles for CI/CD and environment configuration (1 tool, 5 actions)
+  risks: Risk register: risk CRUD, risk-to-risk links, focus links, external dependency tracking, communication log (3 tools, 17 actions)
+  loops: Loop data, reality metrics, reality trees (focus-scoped, one unified graph per focus; CRT and FRT are views with FRT-as-overlay), and Loop Agent: intent plane + execution reality + differential receiver (10 tools, 35 actions)
+  contracts: Contract management: agreements with versioned markdown text (2 tools, 8 actions)
+
+Use action 'list' to see all domains with their tool indexes (what tools and actions each domain provides). Use action 'load' with a domain name or 'all' to load tools.",Execute,Read,0.9980207681655884,Execute,0.9972426891326904
+8034b3d180f0a6ea,telora_product_focus,"Execution roadmap: group deliveries into themed work scopes. Focuses define what the AI daemon works on -- assigning an agent role queues the focus for autonomous execution. Actions: list focuses for a product, create a focus (name + productId), update focus settings (description, status, agent role, pipeline config), reorder focus priority, merges (list merge history for a focus), retrospective_trigger (create a pending retrospective for a focus), retrospective_run (execute a pending retrospective via LLM), retrospective_list (list retrospectives for a focus), retrospective_get (get a single retrospective by ID), review_complete (terminal action for a review agent: writes a focus_reviews row with outcome + summary + references, and updates focus.last_reviewed_at and focus.last_review_outcome). On update, pass `clearReviewRequest: true` to clear `product_focuses.review_requested_at` -- the non-SQL recovery path for a focus stuck with a stale review request. List responses include a 1-based `index` on each item (response-local; recomputed per call).",Destructive,Execute,0.9805989265441895,Destructive,0.9704065918922424
+fb08ba343ab4fc5a,telora_product_strategy,DEPRECATED: use telora_product_focus. This alias accepts both legacy strategyId/strategyIds and new focusId/focusIds parameters and will be removed in a future release.,Other,Read,0.8103195428848267,Destructive,0.6746836304664612
+06953d0e78c07b9f,sc_init,Initialize a new feature specification. MUST be called from the workspace root directory. Do not cd into subdirectories first.,Read,Write,0.8706978559494019,Read,0.7492759823799133
+ee9d200a57e30d13,service_info,"[API] Get detailed information about a specific service
+
+⚡️ Best for:
+  ✓ Viewing service configuration and status
+  ✓ Checking deployment details
+  ✓ Monitoring service health
+
+→ Prerequisites: service_list
+
+→ Next steps: deployment_list, variable_list
+
+→ Related: service_update, deployment_trigger",Read,Execute,0.8916043639183044,Read,0.7903071641921997
+a899ab0010437ac0,Built,in query execution statistics,Read,Execute,0.8805010914802551,Read,0.7949932217597961
+d08013fefc63b7bf,n8n_autofix_workflow,Automatically fix common workflow errors,Write,Read,0.9806749224662781,Write,0.9729779362678528
+67a71b9dd1ec7533,n8n_test_workflow,Trigger and test a workflow execution,Execute,Read,0.9010977149009705,Execute,0.8117800354957581
+54371b7ce66a853b,ingest,"Send biometric signals from any sensor, get unified state back.
+
+    Required: session_id + timestamp (ISO 8601) + at least one signal.
+    Send whatever you have — the API fuses all signals into one state.
+
+    Common signals (highest impact):
+    - heart_rate (bpm, 30-220) + rmssd (ms) — cardiovascular
+    - tone: calm | tense | anxious | hostile — vocal
+    - sentiment: -1.0 to 1.0 — textual
+    - expression: relaxed | neutral | tense — visual
+
+    For trigger memory (cross-session psychological tracking):
+    - Include subject_id (consistent per user, hashed)
+
+    Returns same fields as get_human_state plus signals_received list and topics_detected (if conversation text was included).
+
+    source_device is optional but improves confidence scoring. Not a medical device.
+    ",Execute,Write,0.99583899974823,Financial,0.9945375919342041
+7cb790bbf00d17ac,decide_interrupt,Submit a human decision on an interrupt request (approve or reject).,Read,Write,0.9933422207832336,Read,0.9885295629501343
+7cc321130b196236,firecrawl_crawl,"
+Starts an asynchronous crawl job on a website and extracts content from all pages.
+
+**Best for:** Extracting content from multiple related pages, when you need comprehensive coverage.
+**Not recommended for:** Extracting content from a single page (use scrape); when token limits are a concern (use map + batch_scrape); when you need fast results (crawling can be slow).
+**Warning:** Crawl responses can be very large and may exceed token limits. Limit the crawl depth and number of pages, or use map + batch_scrape for better control.
+**Common mistakes:** Setting limit or maxDepth too high (causes token overflow); using crawl for a single page (use scrape instead).
+**Prompt Example:** ""Get all blog posts from the first two levels of example.com/blog.""
+**Usage Example:**
+```json
+{
+  ""name"": ""firecrawl_crawl"",
+  ""arguments"": {
+    ""url"": ""https://example.com/blog/*"",
+    ""maxDepth"": 2,
+    ""limit"": 100,
+    ""allowExternalLinks"": false,
+    ""deduplicateSimilarURLs"": true
+  }
+}
+```
+**Returns:** Operation ID for status checking; use firecrawl_check_crawl_status to check progress.
+",Read,Execute,0.5477772951126099,Read,0.14504045248031616
+681806710a2d9aa3,append_task_note,Append text to an existing task's note,Write,Read,0.9860223531723022,Write,0.9741960763931274
+e7d9255aec826e4a,dump_database,"Dump the entire OmniFocus database including inbox, projects, folders, tags, and perspectives in a single call. Essential for getting full context.",Write,Destructive,0.6258388161659241,Write,0.3076385259628296
+fe39cfb7c453691d,sync_database,"Trigger an OmniFocus sync to push local changes to OmniSync and pull updates from other devices. CALL THIS ONCE at the end of any session that mutated data — especially after batch_create_tasks, batch_complete_tasks, batch_delete_tasks, or any sequence of multiple create/update/delete/move operations. Do NOT call after every individual mutation; sync once at the end of the chain. Returns immediately while sync runs in the background.",Destructive,Execute,0.9173262119293213,Destructive,0.8538928031921387
+6ebe8a3472a3f835,uncomplete_task,Mark a completed task as incomplete (re-open it),Write,Read,0.9960392713546753,Write,0.993340790271759
+c408acb7c1c31c2f,Output,MCP embedded resource (STL),Write,Read,0.5446925759315491,Write,0.179720938205719
+c7deeef212af1785,photopea_group_layers,Group multiple layers into a layer group (folder). Layers are specified by name — use get_layers to find layer names. Grouped layers can be ungrouped later with ungroup_layers.,Write,Read,0.7014063596725464,Write,0.4084931015968323
+dd59152babb38ee2,photopea_ungroup_layers,"Dissolve a layer group, moving all child layers to the document root. The group folder is removed but its contents are preserved. Use get_layers to find group names.",Write,Read,0.9901570081710815,Write,0.9867393970489502
+73d98953cba1725a,`decode_plantuml`,Decode PlantUML from encoded strings,Write,Read,0.9785605072975159,Write,0.9621671438217163
+814a6a9a0ca75e88,`encode_plantuml`,Encode PlantUML code for URL sharing,Write,Read,0.9903877377510071,Write,0.984220564365387
+49ec5890cb002455,browser_close,Close the browser instance,Execute,Write,0.6609030365943909,Execute,0.36231228709220886
+4f83ec45ca6674d0,browser_drag,Drag an element to another location,Execute,Write,0.7759920358657837,Execute,0.6195005178451538
+293b79fe16c64b0b,browser_file_upload,Upload a local file to a web page,Execute,Write,0.9972952008247375,Execute,0.9965288639068604
+b1f75d42f783350c,browser_generate_playwright_test,Generate a Playwright test script from actions,Write,Read,0.6149613261222839,Write,0.2696015536785126
+2c3c7ce97e722d8b,browser_hover,Hover over an element on the page,Execute,Write,0.5808106064796448,Execute,0.22127774357795715
+9b4662e197c038a3,browser_install,Install the browser binary,Execute,Write,0.9567565321922302,Execute,0.9239941239356995
+6014540b40c2f505,browser_resize,Resize the browser window,Execute,Write,0.993285596370697,Execute,0.9902260899543762
+545e790abfb11325,browser_select_option,Select an option from a dropdown,Execute,Write,0.9957745671272278,Read,0.9941861033439636
+549dec2d55454f16,browser_tab_close,Close a specific browser tab,Execute,Write,0.7324932217597961,Execute,0.5038992762565613
+f1adff1a032d2f88,browser_tab_select,Switch to a specific browser tab,Execute,Write,0.9948087930679321,Execute,0.9929219484329224
+6d3e70e5984c8f5d,browser_type,Type text into an input field,Execute,Write,0.9829440712928772,Execute,0.971420407295227
+6a6fe1bb957726ef,browser_wait_for,Wait for a condition or text to appear on page,Read,Execute,0.9504229426383972,Read,0.9159343838691711
+fa12ead7af10d930,qualitygate_trends,"Retrieve validation trend data from your qualitygate_validate history. Call periodically (e.g. daily or weekly) to spot degrading output quality. Returns daily pass/warn/fail counts, overall pass rate, most common failure reasons ranked by frequency, and check-type distribution (directive_compliance, schema_validation, code_syntax, tone, factual_claims). Use after running qualitygate_validate regularly to build a meaningful trend. Free — no credits charged.",Execute,Read,0.9950674772262573,Execute,0.9920039176940918
+3a02218affc8cc37,broadcast_transaction,"Broadcast a pre-signed TRON transaction with auto energy delegation. Send your signed transaction data and PowerSun will delegate energy before broadcasting. Works with API key (balance deduction) or x402 USDC payment. Without authentication, returns cost estimate.",Write,Read,0.9950852990150452,Write,0.9928986430168152
+542a9a1243a150a1,prismism_health,Verify that the Prismism MCP server is running and the API key is configured correctly. Call this first to confirm your setup works before doing anything else.,Write,Read,0.9969889521598816,Write,0.9957568645477295
+5e5d7f7019e00a73,audit_layout,"Evaluate visual rhythm from a rendered page's geometry. Call with no arguments to get a DevTools snippet to paste into your page — it prints {elements, viewport} JSON. Call again with that JSON to get alignment, gap-rhythm, and optical-balance scores. This is the complement to audit_page for things only visible once rendered.",Read,Write,0.9057626724243164,Read,0.8369783759117126
+450ea8e7c644a701,audit_page,"Audit HTML/CSS against Raven's design quality standards. Checks typography (min 13px, weight 400+, modular-scale heading ratios, line-height consistency), accessibility (WCAG touch targets, alt text, contrast), responsive patterns (flexbox over grid, clamp sizing, max-width containers), style guide compliance (CSS custom properties, no bare hex), and visual rhythm (4/8px spacing grid, tight spacing scale, palette size). Returns pass/fail per check with specific fix instructions.",Execute,Write,0.8252197504043579,Read,0.7255542874336243
+27cfa7fd2eb57d1c,authorize_email_access,"One-time setup: Connect the user's Gmail account via OAuth so the AI can read verification emails automatically. Returns an authorization URL the user must visit. After authorizing, the AI can use read_verification_email to fetch OTP codes.",Read,Write,0.9949638843536377,Read,0.9933546781539917
+a6d82290b60500d6,browser_hover,"Hover over an element on the page. Useful for triggering tooltips, dropdown menus, or hover states. Returns a screenshot after hovering.",Read,Write,0.9309829473495483,Read,0.8874741196632385
+ea83701c5f9d1da3,open_main_window,Navigate to page/block,Write,Execute,0.9304556846618652,Write,0.8881849050521851
+c41f82feba2e10da,categorize-transactions-by-dazoom,[씨즈데이터] DaZoom 통장 및 카드 거래내역 분석 툴,Other,Read,0.998760461807251,Write,0.9981819987297058
+48a1c3186c7d98c6,data_delete,Delete a specific entry from a data store by its index from data_list. Returns the deleted entry for confirmation.,Read,Destructive,0.9977220892906189,Read,0.9971418380737305
+d3796951d53275d6,data_manage,"Manage session-forge data. Actions: prune (remove entries older than N days), export (dump all data as JSON), clear (wipe a specific store), stats (show entry counts and file sizes).",Destructive,Write,0.98916095495224,Destructive,0.9816106557846069
+5c21a3c1e3034412,rpc_call,Call arbitrary JSON-RPC methods,Other,Read,0.6773445010185242,Execute,0.4956677556037903
+cae5c5eea18a61e8,rpc_discover,Discover available JSON-RPC methods,Other,Read,0.9952907562255859,Other,0.9936745166778564
+b4d8631df519bb4c,checkpoint,Manage database checkpoints for safe experimentation. Start checkpoint mode to enable undo/redo capabilities.,Execute,Write,0.7495359182357788,Execute,0.5417004823684692
+0725c656ffe61859,spec-workflow-guide,"Load essential spec workflow instructions to guide feature development from idea to implementation.
+
+# Instructions
+Call this tool FIRST when users request spec creation, feature development, or mention specifications. This provides the complete workflow sequence (Requirements → Design → Tasks → Implementation) that must be followed. Always load before any other spec tools to ensure proper workflow understanding. Its important that you follow this workflow exactly to avoid errors.",Other,Read,0.8464390635490417,Other,0.7767258286476135
+625a3fabb431282d,steering-guide,"Load guide for creating project steering documents.
+
+# Instructions
+Call ONLY when user explicitly requests steering document creation or asks about project architecture docs. Not part of standard spec workflow. Provides templates and guidance for product.md, tech.md, and structure.md creation. Its important that you follow this workflow exactly to avoid errors.",Other,Read,0.7942429780960083,Other,0.7194552421569824
+84256e50f790862f,create_payment_link,Create a payment link for collecting money,Financial,Write,0.997463583946228,Read,0.9966344833374023
+996609ef4e09fa1b,create_refund,Issue a refund to a customer,Financial,Write,0.5804669260978699,Financial,0.20087257027626038
+62fa361d10cfaa47,finalize_invoice,Finalise and send an invoice for payment,Financial,Write,0.9470205903053284,Execute,0.9092938899993896
+4693dcdcf0071a08,supadata_crawl,Create a crawl job to extract content from all pages on a website. Returns a jobId - use supadata_check_crawl_status with that jobId to poll for results.,Write,Read,0.9883429408073425,Write,0.9803141951560974
+24fec198941a0596,tavily-map,Create a structured map of website architecture,Read,Write,0.8537125587463379,Read,0.7485243082046509
+1c860d46259d32bc,adjust_timestamp,Adjust a timestamp by adding or subtracting a duration. DST-aware: '+1d' preserves wall-clock time across daylight saving transitions.,Read,Write,0.9533853530883789,Read,0.9122128486633301
+bdca88454b521250,expand_rrule,Expand a recurrence rule (RRULE) into concrete event instances.,Read,Write,0.9971777200698853,Read,0.9958685636520386
+9dc90bd877a30fd3,multiply,두 숫자의 곱을 반환합니다.,Other,Read,0.6015653014183044,Write,0.22257673740386963
+f03a5ac0dcf7497e,tl_seed_contracts,Deploy multiple smart contracts in sequence. E2E only.,Execute,Read,0.5402388572692871,Execute,0.101888507604599
+9989c624d91cd905,schema_overview,Get a high-level overview of the entire Valets data model. Start here to understand what models and enums exist before drilling into specifics.,Execute,Read,0.9701797962188721,Execute,0.9445397853851318
+62c21fdcb986deeb,enhance_prompt,"Rewrites a short/vague prompt into a detailed, structured, actionable prompt",Other,Read,0.9898977279663086,Execute,0.9839674234390259
+248d1dbfe25b8efe,glob,"Find files matching a glob pattern (e.g., '**/*.ts', 'src/**/*.js')",Other,Read,0.9995312690734863,Write,0.9993568658828735

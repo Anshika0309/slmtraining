@@ -1,0 +1,151 @@
+record_id,name,description,true,predicted,confidence,second,margin
+86f99288adc5c47d,crypto_dtd,"Get the Distance-to-Default (DtD) score for a crypto token. DtD measures distance-to-default on a 0-5 scale (5=healthy, 0=imminent collapse). Returns 7 signal scores (Liquidity, Holders, Resilience, Fundamental, Contagion, Structural, Relative Weakness), trend classification (FREEFALL/FALLING/SLIDING/STABLE/IMPROVING), crash probability, and Structural Collapse status. Example: crypto_ndd(token_id='solana')",Execute,Read,0.998969316482544,Write,0.998587965965271
+85037dc74e9d2dc5,managed_batch_translation_workflow,"Execute managed batch translation workflow with comprehensive monitoring and analytics.
+
+This workflow provides complete batch translation lifecycle management:
+1. Pre-validates language pairs and terminologies
+2. Starts batch translation job with S3 integration
+3. Monitors job progress with automated polling
+4. Collects performance metrics upon completion
+5. Returns comprehensive results with monitoring history
+
+Benefits:
+- Pre-validation of resources before job start
+- Automated monitoring with continuous progress tracking
+- Performance analytics and optimization insights
+- Comprehensive error handling and status reporting",Execute,Write,0.8851251602172852,Execute,0.8056347370147705
+7af0353aa4e8959c,cancel_metadata_transfer_job,"Cancel a metadata transfer job.
+
+Args:
+    metadata_transfer_job_id: The ID of the metadata transfer job to cancel
+    region: AWS region (default: us-east-1)
+
+Returns:
+    Dictionary containing cancellation response",Financial,Destructive,0.9050653576850891,Financial,0.823020339012146
+06a97e533e450152,create_metadata_transfer_job,"Create a new metadata transfer job for bulk import/export operations between S3 and IoT SiteWise.
+
+This tool provides a user-friendly way to set up metadata transfer jobs with support for bulk export
+using IoT SiteWise source configuration filters, avoiding the need for individual API calls.
+
+Args:
+    transfer_direction: Direction of transfer:
+        - ""s3_to_sitewise"": Import metadata from S3 to IoT SiteWise
+        - ""sitewise_to_s3"": Export metadata from IoT SiteWise to S3
+    s3_bucket_name: S3 bucket name. If not provided, the agent should list available S3 buckets.
+    s3_object_key: S3 object key/path. If not provided, will use sensible defaults.
+    export_all_resources: For sitewise_to_s3: Export all IoT SiteWise resources using bulk filters
+    asset_model_id: For sitewise_to_s3: Specific asset model ID to export
+    asset_id: For sitewise_to_s3: Specific asset ID to export
+    include_child_assets: For asset exports: Include child assets in hierarchy (includeOffspring). Cannot be True when include_asset_model is True.
+    include_asset_model: For asset exports: Include asset model definition (includeAssetModel). Cannot be True when include_child_assets is True.
+    region: AWS region (default: us-east-1)
+    metadata_transfer_job_id: Optional custom job ID
+    description: Optional job description
+
+Returns:
+    Dictionary containing job creation response or guidance for next steps
+
+Examples:
+    # Import from S3 to IoT SiteWise
+    create_metadata_transfer_job(
+        transfer_direction=""s3_to_sitewise"",
+        s3_bucket_name=""my-sitewise-metadata"",
+        s3_object_key=""bulk-import/assets.json""
+    )
+
+    # Export ALL IoT SiteWise resources to S3 (bulk export)
+    create_metadata_transfer_job(
+        transfer_direction=""sitewise_to_s3"",
+        s3_bucket_name=""my-sitewise-exports"",
+        export_all_resources=True
+    )
+
+    # Export specific asset model and asset
+    create_metadata_transfer_job(
+        transfer_direction=""sitewise_to_s3"",
+        s3_bucket_name=""my-sitewise-exports"",
+        asset_model_id=""a1b2c3d4-5678-90ab-cdef-1234567890ab"",
+        asset_id=""f1e2d3c4-b5a6-9078-1234-567890abcdef""
+    )",Financial,Write,0.9003546833992004,Financial,0.8148655295372009
+9957802793a344bf,lambda_function,Tool for invoking a specific AWS Lambda function with parameters.,Other,Read,0.987473726272583,Execute,0.9827356338500977
+ed5842e68cdb8f81,mcp_ado_pipelines_update_build_stage,"Update a build stage (cancel, retry, or run)",Execute,Write,0.9607460498809814,Execute,0.9324696660041809
+3bd92726c5a83cbc,brand.scan,"Run AI brand visibility scan across major LLM providers (async, poll with brand.scan.get).",Execute,Read,0.9707731604576111,Execute,0.9440733790397644
+abf4e12be2893a37,scout.reddit,Run Reddit scout analysis. Returns processing status — poll scout.reddit.result for results.,Execute,Read,0.6701655387878418,Execute,0.34913694858551025
+a6ec189a7d63090a,scout.reddit.result,Get Reddit scout run status and results by run ID.,Execute,Read,0.7731738686561584,Execute,0.5521469116210938
+b46b42141d0bee8e,scout.x.result,Get X scout run status and results by run ID.,Execute,Read,0.8093541860580444,Execute,0.6239018440246582
+0382e3487f2fa5af,understand_image,"Analyze images with AI vision — screenshots, diagrams, UI mockups, error messages, charts, photos. Provide a URL or local file path to the image.",Other,Read,0.9972313046455383,Write,0.9960235953330994
+c05618595ceae0e9,dolores_new_memecoins,"Fetch newly launched memecoins on PumpFun from DexScreener live data. Returns real-time token info including price, market cap, volume, and contract address.",Execute,Read,0.9981675148010254,Write,0.9973607659339905
+bf6a94a16b63c2c7,inverspec_phase_1_architecture,Returns the Phase 1 prompt template for high-level architecture and request-flow mapping. Run after Phase 0 inventory is complete.,Execute,Read,0.9364445209503174,Execute,0.879341185092926
+2c0a2155dfd68f56,inverspec_phase_7_maintenance,Returns the Phase 7 prompt template for partial updates to an existing technical specification after code changes. Maps changed file patterns to the right spec phase and rewrites only affected sections. Requires a completed initial spec (Phases 0–6).,Execute,Read,0.9943599104881287,Write,0.9912279844284058
+73f0a5e4bb45fca5,aide_init,"Bootstrap the AIDE development environment into a project. Returns structured JSON for agent consumption — not prose.
+
+The tool uses a two-call pattern for progressive disclosure:
+
+**First call (no `category` param):** Returns a lightweight summary — every step with `name`, `status` (would-create/would-overwrite/would-skip/exists), `category`, and `filePath`, but NO `content` fields. Also returns `brainHints` (brain root candidates) and detected `framework`. Use this to understand what needs to be done and which categories require user prompts.
+
+**Second call (with `category` param):** The tool writes all `would-create` AND approved `would-overwrite` files directly to disk itself and returns a manifest — steps with `filePath`, `status` (`created`, `overwritten`, or `exists`), and `name`, but NO `content`. `would-skip` steps stay `would-skip` in the manifest (tool writes nothing for them). The agent never sees file content and never uses the Write tool for new files.
+
+**Exception — MCP steps:** For MCP steps, the manifest includes `prescription` data (key name and entry object) so the agent can read the existing config, merge, and write. The tool never touches MCP config directly.
+
+**Exception — brain category:** When calling with `category=brain`, also pass `brainPath` with the user-confirmed brain root path. The tool creates the brain root scaffold directories directly.
+
+**Exception — IDE VS Code steps:** IDE steps that need external tooling (VS Code CLI) return instructions for the agent to execute, since those aren't simple file writes.
+
+**Agent branch logic — silent-on-create, prompt-on-overwrite:**
+
+After the first call, walk the categories using this rule:
+- **Pure-create category** (all steps are `would-create`, `would-skip`, or `exists`): apply silently by calling with `category=X` immediately — no AskUserQuestion. A category with nothing on disk to overwrite has no decision the user can inform.
+- **Overwrite-bearing category** (any step is `would-overwrite`): pause and use AskUserQuestion with structured options. Name the files that would be overwritten. If the user approves, call with `category=X` — the tool overwrites and returns `overwritten` in the manifest. If the user declines an overwrite but wants the new files, call with `category=X` — the tool writes only `would-create` steps; the `would-overwrite` step stays `would-overwrite` in the manifest.
+- **Inherent-decision categories** (framework, brain root path, MCP config merge, IDE choice): always use AskUserQuestion regardless of disk state. These are not file-write decisions — filesystem contents cannot resolve them.
+
+**IMPORTANT — one-at-a-time wizard pattern using AskUserQuestion:**
+Do NOT present a summary table of all categories. Do NOT offer ""all"" as an option. Do NOT ask conversational questions — use the `AskUserQuestion` tool with structured options at every pause point.
+
+1. Call without `category` first to get the metadata
+2. Present ONLY the detected framework — use AskUserQuestion with Yes/{alternatives} options. STOP.
+3. Walk categories in order: methodology, commands, agents, skills, mcp, brain, ide, readme. For each:
+   - Pure-create: apply silently (call with `category=X`), report results, move to next.
+   - Overwrite-bearing: use AskUserQuestion naming the would-overwrite files. STOP. Wait for selection, then call with `category=X`. Report manifest (created N, overwrote M). Move to next.
+   - Inherent decision: always use AskUserQuestion. STOP.
+4. For brain: use AskUserQuestion with brainHints as labeled options (user can pick Other for custom path). STOP. Then call with `category=brain` and `brainPath`.
+5. For MCP: use AskUserQuestion with Merge/Skip options. Merge the `prescription` entry into the existing config yourself (read → merge → write). STOP.
+6. For IDE: use AskUserQuestion with multiSelect for Zed/VS Code/Neither. STOP.
+
+Each pause point is ONE AskUserQuestion → wait for selection → then proceed. Never show multiple categories at once. Never ask open-ended conversational questions.",Execute,Read,0.7418944239616394,Execute,0.6257607340812683
+956d3722a1d12136,aide_upgrade,"Compare the AIDE methodology artifacts in this project against the canonical versions and return structured JSON results grouped by category. Use this when the user asks to update AIDE, sync AIDE, refresh AIDE, check for AIDE updates, or bring AIDE up to date. This is NOT for editing user .aide specs — it inspects methodology infrastructure only.
+
+The tool uses a two-call pattern for progressive disclosure:
+
+**First call (no `category` param):** Returns a lightweight summary — every category with file names, statuses, and counts, but NO file content. Use this to understand what has drifted and present a summary to the user. Ask which categories they want to apply.
+
+**Second call (with `category` param):** The tool writes all differs/missing files directly to disk itself and returns a manifest — file results with `filePath`, `status` (`""updated""`, `""created""`, or `""unchanged""`), and `name`, but NO `canonicalContent`. The agent never sees file content and never uses the Write tool for methodology files.
+
+Repeat the second call for each category the user confirms.
+
+As the calling agent, you must:
+1. Call without `category` first to get the summary
+2. Present each drifted category (differs/missing) and ask the user which to apply
+3. For each confirmed category, call again with `category=X` — the tool writes the files and returns a manifest. Report what was updated/created to the user.
+4. For the `mcp` category, the manifest still includes `prescription` data — merge the entry into the existing MCP config yourself (read → merge → write). If `malformed`, tell the user — do not overwrite.
+5. For `ide`, the manifest may include `instructions` for VS Code extension install — execute that command for the user. Zed config is written directly by the tool.
+6. For `brain`, `category=brain` never writes; the manifest entry carries an `instructions` field directing the agent to invoke `/aide:brain config`, which is the single canonical home for brain.aide creation.
+
+**IMPORTANT — one-at-a-time wizard pattern using AskUserQuestion:**
+Do NOT present all categories at once. Walk the user through ONE category at a time using AskUserQuestion with Yes/Skip options. Stop after each question and wait for confirmation before calling with that category.
+
+Categories: pointer-stub, methodology-docs, version-metadata, commands, agents, skills, mcp, ide, readme, brain.
+
+Upgrade surface (user code and user .aide specs are never touched):
+- AIDE pointer stub in the agent config file
+- Canonical methodology docs under .aide/docs/
+- versions.json metadata under .aide/docs/
+- Slash commands for all pipeline phases
+- Pipeline agent files, skill templates
+- MCP server entry in the project's MCP config
+- IDE file association config (Zed settings, VS Code extension)
+
+Supports Claude Code, Cursor, Windsurf, and Copilot. Auto-detects the framework or accepts an override.",Execute,Write,0.6483097076416016,Execute,0.4599907398223877
+9162d7658e44ee30,argument_validation,Analyse arguments for logical fallacies,Execute,Read,0.997664213180542,Other,0.9968741536140442
+ba6f4d0297aa4da4,code_review_deep,"Review code for security, performance, and quality",Execute,Read,0.998316764831543,Write,0.9977260231971741
+487646223b1e62a9,create_function_schema,Generate JSON Schema for function calling,Execute,Write,0.9969160556793213,Read,0.9954415559768677
+2de239200d1232c6,creative_ideation,Generate creative ideas with feasibility analysis,Execute,Read,0.9419602155685425,Write,0.9171332120895386
